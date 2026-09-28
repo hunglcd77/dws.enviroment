@@ -251,7 +251,7 @@ html[data-theme="dark"] .tbl tr:nth-child(even) td{background:#1B2119;}
       <div class="rail-logo">MT</div>
       <div><p class="rail-brand">Tra cứu Thủ tục<br>Môi trường</p></div>
     </div>
-    <p class="rail-sub">Công ty CP Cấp nước &amp; Môi trường Đô thị Đồng Tháp — v3.1, 09/2026</p>
+    <p class="rail-sub">Công ty CP Cấp nước &amp; Môi trường Đô thị Đồng Tháp — v3.2, 09/2026</p>
 
     <div class="rail-group">
       <p class="rail-label">Công ty</p>
@@ -263,6 +263,7 @@ html[data-theme="dark"] .tbl tr:nth-child(even) td{background:#1B2119;}
       <button class="rail-btn" data-goto="sec-form"><span class="rail-ic"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h6"/><circle cx="19" cy="18" r="2.2"/></svg></span><strong>Tra cứu theo Form</strong></button>
       <button class="rail-btn" data-goto="sec-tracuunhanh"><span class="rail-ic"><svg viewBox="0 0 24 24"><path d="M12 3v6M12 9l-5 5M12 9l5 5"/></svg></span>Tra cứu nhanh</button>
       <button class="rail-btn" data-goto="sec-canccu"><span class="rail-ic"><svg viewBox="0 0 24 24"><path d="M12 3 3 7l9 4 9-4-9-4Z"/></svg></span>Căn cứ pháp lý</button>
+      <button class="rail-btn" data-goto="sec-tinhthanh"><span class="rail-ic"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 7v5l3 2"/></svg></span>34 Tỉnh thành</button>
       <button class="rail-btn" data-goto="sec-coquan"><span class="rail-ic"><svg viewBox="0 0 24 24"><path d="M4 21h16M5 21V10l7-5 7 5v11"/></svg></span>Cơ quan quản lý</button>
     </div>
 
@@ -295,7 +296,7 @@ html[data-theme="dark"] .tbl tr:nth-child(even) td{background:#1B2119;}
         </button>
         <div class="search-wrap">
           <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input id="searchInput" class="search-input" type="text" placeholder="Tìm thủ tục, mẫu số, cơ quan, thời hạn…" autocomplete="off">
+          <input id="searchInput" class="search-input" type="text" placeholder="Tìm thủ tục, tỉnh thành, mẫu số, cơ quan…" autocomplete="off">
           <div id="searchResults" class="search-results"></div>
         </div>
         <button class="rail-toggle" id="themeToggle" aria-label="Đổi chế độ" style="margin-left:10px;">
@@ -303,13 +304,13 @@ html[data-theme="dark"] .tbl tr:nth-child(even) td{background:#1B2119;}
           <svg id="iconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2M12 19.5v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2.5 12h2M19.5 12h2"/></svg>
         </button>
       </div>
-      <p class="search-hint">Gõ để tìm trong toàn bộ nội dung sổ tay.</p>
+      <p class="search-hint">Gõ để tìm trong toàn bộ nội dung sổ tay — bao gồm 34 tỉnh/thành sau sáp nhập.</p>
     </div>
 
     <div class="content" id="content"></div>
 
     <div class="foot">
-      Công cụ tra cứu được biên soạn từ Sổ tay Hướng dẫn Thủ tục Môi trường (Phiên bản 3.1, 09/2026), căn cứ Luật BVMT 72/2020/QH14 (sửa đổi bởi Luật 146/2025/QH15), VBHN 49/VBHN-BNNMT, VBHN 55/VBHN-BNNMT.
+      Công cụ tra cứu được biên soạn từ Sổ tay Hướng dẫn Thủ tục Môi trường (Phiên bản 3.2, 09/2026), căn cứ Luật BVMT 72/2020/QH14 (sửa đổi bởi Luật 146/2025/QH15), VBHN 49/VBHN-BNNMT, VBHN 55/VBHN-BNNMT. Danh sách 34 tỉnh/thành theo Nghị quyết 202/2025/QH15 (hiệu lực 01/7/2025).
     </div>
   </div>
 </div>
@@ -320,7 +321,7 @@ const FALLBACK_CONGTY = [
   {"id":"nm01","ten":"Nhà máy nước mặt Đông Bình","diaDiem":"Khu phố Đông Bình, phường Cao Lãnh, tỉnh Đồng Tháp","congSuat":"40.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"ĐKMT đã được UBND phường Cao Lãnh tiếp nhận (CV 90/UBND-KTHTĐT ngày 13/01/2025).","fileGPMT":"","fileDKMT":"files/dkmt/nm01-dong-binh.pdf","status":{"gpmt":"green"}},
   {"id":"nm02","ten":"Nhà máy nước mặt Tân Long","diaDiem":"Khu phố Bến Bắc, phường Cao Lãnh","congSuat":"6.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"ĐKMT đã được UBND phường Cao Lãnh tiếp nhận (CV 1927/UBND-KTHTĐT ngày 07/11/2025).","fileGPMT":"","fileDKMT":"files/dkmt/nm02-tan-long.pdf","status":{"gpmt":"green"}},
   {"id":"nm03","ten":"Nhà máy nước mặt Mỹ Hiệp","diaDiem":"Cụm CN Mỹ Hiệp, xã Mỹ Hiệp","congSuat":"5.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Mỹ Hiệp tiếp nhận ĐKMT (CV 04/UBND-HC ngày 19/6/2025).","fileGPMT":"","fileDKMT":"files/dkmt/nm03-my-hiep.pdf","status":{"gpmt":"green"}},
-  {"id":"nm04","ten":"Nhà máy nước mặt Mỹ An","diaDiem":"Ấp Mỹ An 2, xã Tháp Mười","congSuat":"13.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Tháp Mười tiếp nhận ĐKMT (CV 974/UBND-KT ngày 11/4/2026). Trước đây có GPMT 1197/GPMT-UBND ngày 20/11/2023.","fileGPMT":"","fileDKMT":"files/dkmt/nm04-my-an.pdf","status":{"gpmt":"green"}},
+  {"id":"nm04","ten":"Nhà máy nước mặt Mỹ An","diaDiem":"Ấp Mỹ An 2, xã Tháp Mười","congSuat":"13.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Tháp Mười tiếp nhận ĐKMT (CV 974/UBND-KT ngày 11/4/2026).","fileGPMT":"","fileDKMT":"files/dkmt/nm04-my-an.pdf","status":{"gpmt":"green"}},
   {"id":"nm05","ten":"Trạm cấp nước Mỹ Thọ","diaDiem":"Ấp Mỹ Tây, xã Mỹ Thọ","congSuat":"10.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Phòng KT xã Mỹ Thọ xác nhận thuộc đối tượng MIỄN ĐKMT (CV /PKT-HC ngày /3/2026).","fileGPMT":"","fileDKMT":"files/dkmt/nm05-my-tho.pdf","status":{"gpmt":"green"}},
   {"id":"nm06","ten":"Trạm cấp nước Trường Xuân","diaDiem":"Xã Trường Xuân","congSuat":"2.500 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Trường Xuân tiếp nhận ĐKMT (CV 386/UBND ngày 28/5/2025).","fileGPMT":"","fileDKMT":"files/dkmt/nm06-truong-xuan.pdf","status":{"gpmt":"green"}},
   {"id":"nm07","ten":"Nhà máy nước mặt Trần Quốc Toản","diaDiem":"QL30, phường Mỹ Ngãi","congSuat":"7.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Chưa có văn bản/GPMT — cần thực hiện thủ tục môi trường.","fileGPMT":"","fileDKMT":"","status":{"gpmt":"red"}},
@@ -329,21 +330,21 @@ const FALLBACK_CONGTY = [
   {"id":"nm10","ten":"Nhà máy nước KCN C","diaDiem":"KCN C, phường Tân Quy Đông","congSuat":"15.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND phường Tân Quy Đông tiếp nhận ĐKMT (TB 30/TB-UBND ngày 24/4/2025).","fileGPMT":"","fileDKMT":"files/dkmt/nm10-kcn-c.pdf","status":{"gpmt":"green"}},
   {"id":"nm11","ten":"Nhà máy nước mặt Nha Mân","diaDiem":"QL80, xã Tân Nhuận Đông","congSuat":"7.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Tân Nhuận Đông xác nhận ĐKMT (CV 273/UBND-KT ngày 30/5/2025).","fileGPMT":"","fileDKMT":"files/dkmt/nm11-nha-man.pdf","status":{"gpmt":"green"}},
   {"id":"nm12","ten":"Nhà máy nước mặt Nha Mân 2","diaDiem":"QL80, xã Tân Nhuận Đông","congSuat":"5.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Tân Nhuận Đông xác nhận ĐKMT (CV 272/UBND-KT ngày 30/5/2025).","fileGPMT":"","fileDKMT":"files/dkmt/nm12-nha-man-2.pdf","status":{"gpmt":"green"}},
-  {"id":"nm13","ten":"Nhà máy nước mặt An Hiệp","diaDiem":"Ấp Tân Thạnh 2, xã Phú Hựu","congSuat":"2.500 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Phú Hựu tiếp nhận ĐKMT (CV /UBND-KT ngày /3/2026).","fileGPMT":"","fileDKMT":"files/dkmt/nm13-an-hiep.pdf","status":{"gpmt":"green"}},
+  {"id":"nm13","ten":"Nhà máy nước mặt An Hiệp","diaDiem":"Ấp Tân Thạnh 2, xã Phú Hựu","congSuat":"2.500 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Phú Hựu tiếp nhận ĐKMT.","fileGPMT":"","fileDKMT":"files/dkmt/nm13-an-hiep.pdf","status":{"gpmt":"green"}},
   {"id":"nm14","ten":"Nhà máy nước mặt An Phú Thuận","diaDiem":"Xã Phú Hựu","congSuat":"2.500 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Chưa có văn bản/GPMT — cần thực hiện thủ tục môi trường.","fileGPMT":"","fileDKMT":"","status":{"gpmt":"red"}},
-  {"id":"nm15","ten":"Nhà máy nước mặt Bình Thành","diaDiem":"Xã Bình Thành, huyện Lấp Vò","congSuat":"4.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Đã có GPMT số 01/GPMT-UBND ngày 21/4/2025 của UBND huyện Lấp Vò. Thời hạn 10 năm (đến 18/4/2035).","fileGPMT":"files/gpmt/nm15-binh-thanh.pdf","fileDKMT":"","status":{"gpmt":"green"}},
-  {"id":"nm16","ten":"Nhà máy nước mặt Lộ Tiểu","diaDiem":"QL80, xã Phú Hựu","congSuat":"5.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã An Nhơn tiếp nhận ĐKMT (CV 243/UBND-KT ngày 14/5/2025).","fileGPMT":"","fileDKMT":"","status":{"gpmt":"yellow"}},
+  {"id":"nm15","ten":"Nhà máy nước mặt Bình Thành","diaDiem":"Xã Bình Thành, huyện Lấp Vò","congSuat":"4.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Đã có GPMT số 01/GPMT-UBND ngày 21/4/2025 của UBND huyện Lấp Vò.","fileGPMT":"files/gpmt/nm15-binh-thanh.pdf","fileDKMT":"","status":{"gpmt":"green"}},
+  {"id":"nm16","ten":"Nhà máy nước mặt Lộ Tiểu","diaDiem":"QL80, xã Phú Hựu","congSuat":"5.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Đã có ĐKMT được UBND xã tiếp nhận.","fileGPMT":"","fileDKMT":"files/dkmt/nm16-lo-tieu.pdf","status":{"gpmt":"green"}},
   {"id":"nm17","ten":"Nhà máy nước mặt Mương Điều","diaDiem":"Chợ Mương Điều, xã Tân Khánh Trung","congSuat":"3.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Chưa có văn bản/GPMT — cần thực hiện thủ tục môi trường.","fileGPMT":"","fileDKMT":"","status":{"gpmt":"red"}},
   {"id":"nm18","ten":"Nhà máy nước mặt Khánh Mỹ","diaDiem":"Xã Tân Khánh Trung","congSuat":"2.500 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Chưa có văn bản/GPMT — cần thực hiện thủ tục môi trường.","fileGPMT":"","fileDKMT":"","status":{"gpmt":"red"}},
   {"id":"nm19","ten":"Nhà máy nước mặt Vĩnh Thạnh","diaDiem":"Ấp Hòa Thuận, xã Lấp Vò","congSuat":"500 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Lấp Vò tiếp nhận ĐKMT (TB 38/TB-UBND ngày 11/3/2026).","fileGPMT":"","fileDKMT":"files/dkmt/nm19-vinh-thanh.pdf","status":{"gpmt":"green"}},
-  {"id":"nm20","ten":"Nhà máy nước mặt Phú Hựu","diaDiem":"Xã Phú Hựu, huyện Châu Thành","congSuat":"5.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Đã có GPMT số 27/GPMT-UBND ngày 26/6/2025 của UBND huyện Châu Thành. Thời hạn 10 năm.","fileGPMT":"files/gpmt/nm20-phu-huu.pdf","fileDKMT":"","status":{"gpmt":"green"}},
-  {"id":"nm21","ten":"Nhà máy nước mặt Tân Phú Trung","diaDiem":"Xã Tân Phú Trung","congSuat":"5.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Tân Phú Trung tiếp nhận ĐKMT (CV 222/UBND-KT ngày 08/8/2025).","fileGPMT":"","fileDKMT":"","status":{"gpmt":"yellow"}},
+  {"id":"nm20","ten":"Nhà máy nước mặt Phú Hựu","diaDiem":"Xã Phú Hựu, huyện Châu Thành","congSuat":"5.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Đã có GPMT số 27/GPMT-UBND ngày 26/6/2025 của UBND huyện Châu Thành.","fileGPMT":"files/gpmt/nm20-phu-huu.pdf","fileDKMT":"","status":{"gpmt":"green"}},
+  {"id":"nm21","ten":"Nhà máy nước mặt Tân Phú Trung","diaDiem":"Xã Tân Phú Trung","congSuat":"5.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Đã có ĐKMT được UBND xã tiếp nhận.","fileGPMT":"","fileDKMT":"files/dkmt/nm21-tan-phu-trung.pdf","status":{"gpmt":"green"}},
   {"id":"nm22","ten":"Nhà máy nước mặt Tân Dương","diaDiem":"KDC Tân Dương, xã Tân Dương","congSuat":"3.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Chưa có văn bản/GPMT — cần thực hiện thủ tục môi trường.","fileGPMT":"","fileDKMT":"","status":{"gpmt":"red"}},
-  {"id":"nm23","ten":"Nhà máy nước mặt Hồng Ngự","diaDiem":"Đường Hùng Vương, Kp An Thạnh, P. An Bình","congSuat":"17.500 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Đã có GPMT 1732/GPMT-UBND ngày 05/6/2025 (UBND TP. Hồng Ngự). Sau đó tiếp tục ĐKMT theo NQ 66.19/2026 — TB 2818/UBND-KT ngày 11/9/2026.","fileGPMT":"","fileDKMT":"files/dkmt/nm23-hong-ngu.pdf","status":{"gpmt":"green"}},
-  {"id":"nm24","ten":"Trạm cấp nước Thường Phước","diaDiem":"Đường Trường Chinh, ấp Thường Thới, xã Thường Phước","congSuat":"6.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Thường Phước tiếp nhận ĐKMT ngày 24/9/2026. (Trước đây có GPMT 488/GPMT-UBND ngày 12/5/2025 của UBND tỉnh Đồng Tháp.)","fileGPMT":"","fileDKMT":"files/dkmt/nm24-thuong-phuoc.pdf","status":{"gpmt":"green"}},
+  {"id":"nm23","ten":"Nhà máy nước mặt Hồng Ngự","diaDiem":"Đường Hùng Vương, Kp An Thạnh, P. An Bình","congSuat":"17.500 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Đã có GPMT 1732/GPMT-UBND ngày 05/6/2025. Sau đó ĐKMT theo NQ 66.19/2026 (TB 2818/UBND-KT ngày 11/9/2026).","fileGPMT":"","fileDKMT":"files/dkmt/nm23-hong-ngu.pdf","status":{"gpmt":"green"}},
+  {"id":"nm24","ten":"Trạm cấp nước Thường Phước","diaDiem":"Đường Trường Chinh, ấp Thường Thới, xã Thường Phước","congSuat":"6.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Thường Phước tiếp nhận ĐKMT ngày 24/9/2026.","fileGPMT":"","fileDKMT":"files/dkmt/nm24-thuong-phuoc.pdf","status":{"gpmt":"green"}},
   {"id":"nm25","ten":"Nhà máy nước mặt An Long","diaDiem":"Ấp Phú Lợi, xã An Long","congSuat":"6.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã An Long tiếp nhận ĐKMT (CV 947/UBND-KT ngày 10/6/2026).","fileGPMT":"","fileDKMT":"files/dkmt/nm25-an-long.pdf","status":{"gpmt":"green"}},
-  {"id":"nm26","ten":"Nhà máy nước mặt Bình Phú","diaDiem":"Ấp Gò Da, xã Bình Phú, huyện Tân Hồng","congSuat":"6.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Đã có GPMT số 83/GPMT-UBND ngày 29/5/2025 của UBND huyện Tân Hồng. Thời hạn 10 năm (đến 28/5/2035).","fileGPMT":"files/gpmt/nm26-binh-phu.pdf","fileDKMT":"","status":{"gpmt":"green"}},
-  {"id":"nm27","ten":"Nhà máy nước mặt Tràm Chim","diaDiem":"Ấp 2, xã Tràm Chim","congSuat":"6.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Tràm Chim tiếp nhận ĐKMT (CV 1663/UBND-KT ngày 07/8/2026). (Trước đây có GPMT 1438/GPMT-UBND ngày 27/6/2025.)","fileGPMT":"","fileDKMT":"files/dkmt/nm27-tram-chim.pdf","status":{"gpmt":"green"}},
+  {"id":"nm26","ten":"Nhà máy nước mặt Bình Phú","diaDiem":"Ấp Gò Da, xã Bình Phú, huyện Tân Hồng","congSuat":"6.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Đã có GPMT số 83/GPMT-UBND ngày 29/5/2025 của UBND huyện Tân Hồng.","fileGPMT":"files/gpmt/nm26-binh-phu.pdf","fileDKMT":"","status":{"gpmt":"green"}},
+  {"id":"nm27","ten":"Nhà máy nước mặt Tràm Chim","diaDiem":"Ấp 2, xã Tràm Chim","congSuat":"6.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Tràm Chim tiếp nhận ĐKMT (CV 1663/UBND-KT ngày 07/8/2026).","fileGPMT":"","fileDKMT":"files/dkmt/nm27-tram-chim.pdf","status":{"gpmt":"green"}},
   {"id":"nm28","ten":"Nhà máy nước mặt Thanh Bình","diaDiem":"Xã Thanh Bình","congSuat":"8.500 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Thanh Bình tiếp nhận ĐKMT ngày 12/11/2025.","fileGPMT":"","fileDKMT":"files/dkmt/nm28-thanh-binh.pdf","status":{"gpmt":"green"}}
 ];
 
@@ -363,7 +364,8 @@ const DATA = {
     ["11b","NQ 66.19/2026/NQ-CP","18/5/2026–28/2/2027","⭐ Cắt giảm, phân quyền TTHC môi trường (Phụ lục IX)."],
     ["12","VBHN 55/VBHN-BNNMT","19/05/2026","Hợp nhất các Thông tư."],
     ["13","Luật Tổ chức CQĐP 72/2025/QH15","2025–2026","Chuyển mô hình 3 cấp sang 2 cấp."],
-    ["14","Luật Tài nguyên nước 2023","2023","Giấy phép khai thác nước."]
+    ["14","Nghị quyết 202/2025/QH15","12/6/2025","Sáp nhập tỉnh, bỏ cấp huyện — 34 tỉnh/thành."],
+    ["15","Luật Tài nguyên nước 2023","2023","Giấy phép khai thác nước."]
   ],
   coQuan:[
     ["Cấp Trung ương","Bộ Nông nghiệp và Môi trường","Thẩm định ĐTM, cấp GPMT dự án Nhóm I."],
@@ -477,15 +479,57 @@ const DATA = {
   NGUONG_66_19:{gpmt_nuocThai_nhomA:100,gpmt_nuocThai_khac:150,gpmt_khiThai:100000,dkmt_tinh_nuocThai:50,dkmt_tinh_khiThai:20000},
   nganhNghe:[
     {ma:"khaikhoang",ten:"Khai thác khoáng sản",nhomA:false,dtmDat:true},
-    {ma:"capnuoc",ten:"Sản xuất, cung cấp nước sạch",nhomA:false},
-    {ma:"chebienthucpham",ten:"Chế biến thực phẩm",nhomA:false},
-    {ma:"khac",ten:"Loại hình khác",nhomA:false}
+    {ma:"capnuoc",ten:"Sản xuất, cung cấp nước sạch (nhà máy nước)",nhomA:false},
+    {ma:"chebienthucpham",ten:"Chế biến thực phẩm, đồ uống",nhomA:false},
+    {ma:"detnhuom",ten:"Dệt may có công đoạn nhuộm",nhomA:true},
+    {ma:"ximang",ten:"Sản xuất xi măng có clinker",nhomA:true},
+    {ma:"nhietdien",ten:"Nhiệt điện than",nhomA:true},
+    {ma:"kcnht",ten:"Khu sản xuất, kinh doanh tập trung",nhomA:true,dtmDat:true},
+    {ma:"xulyctnh",ten:"Dịch vụ tái chế, xử lý CTNH",nhomA:true,luonGPMT:true},
+    {ma:"nhapkhauphelieu",ten:"Nhập khẩu phế liệu làm nguyên liệu",nhomA:true,luonGPMT:true},
+    {ma:"dienhatnhan",ten:"Nhà máy điện hạt nhân",nhomA:false,dtmLuon:true},
+    {ma:"lanbien",ten:"Dự án có hoạt động lấn biển",nhomA:false,dtmLuon:true},
+    {ma:"channuoitaptrung",ten:"Chăn nuôi tập trung quy mô công nghiệp",nhomA:false},
+    {ma:"cokhilaprap",ten:"Cơ khí, lắp ráp, may mặc (không nhuộm)",nhomA:false},
+    {ma:"khobai",ten:"Kho bãi, logistics, trung tâm thương mại",nhomA:false},
+    {ma:"yte",ten:"Cơ sở y tế, bệnh viện, phòng khám",nhomA:false},
+    {ma:"khac",ten:"Loại hình khác / chưa xác định",nhomA:false}
   ],
   tinhThanh:[
-    {ma:"DONGTHAP",ten:"Đồng Tháp",ghiChu:"Hợp nhất Đồng Tháp + Tiền Giang"},
-    {ma:"HCM",ten:"TP. Hồ Chí Minh",ghiChu:"Hợp nhất HCM + Bình Dương + BRVT"},
-    {ma:"HN",ten:"TP. Hà Nội",ghiChu:"Giữ nguyên"},
-    {ma:"CT",ten:"TP. Cần Thơ",ghiChu:"Hợp nhất Cần Thơ + Hậu Giang + Sóc Trăng"}
+    {ma:"HN",ten:"TP. Hà Nội",loai:"TW",ghiChu:"Giữ nguyên"},
+    {ma:"HP",ten:"TP. Hải Phòng",loai:"TW",ghiChu:"Hợp nhất Hải Phòng + Hải Dương"},
+    {ma:"DN",ten:"TP. Đà Nẵng",loai:"TW",ghiChu:"Hợp nhất Đà Nẵng + Quảng Nam"},
+    {ma:"HCM",ten:"TP. Hồ Chí Minh",loai:"TW",ghiChu:"Hợp nhất TP.HCM + Bình Dương + Bà Rịa - Vũng Tàu"},
+    {ma:"CT",ten:"TP. Cần Thơ",loai:"TW",ghiChu:"Hợp nhất Cần Thơ + Hậu Giang + Sóc Trăng"},
+    {ma:"HUE",ten:"TP. Huế",loai:"TW",ghiChu:"Giữ nguyên"},
+    {ma:"TUYENQUANG",ten:"Tuyên Quang",loai:"tinh",ghiChu:"Hợp nhất Tuyên Quang + Hà Giang"},
+    {ma:"LAOCAI",ten:"Lào Cai",loai:"tinh",ghiChu:"Hợp nhất Lào Cai + Yên Bái"},
+    {ma:"THAINGUYEN",ten:"Thái Nguyên",loai:"tinh",ghiChu:"Hợp nhất Thái Nguyên + Bắc Kạn"},
+    {ma:"PHUTHO",ten:"Phú Thọ",loai:"tinh",ghiChu:"Hợp nhất Phú Thọ + Vĩnh Phúc + Hòa Bình"},
+    {ma:"BACNINH",ten:"Bắc Ninh",loai:"tinh",ghiChu:"Hợp nhất Bắc Ninh + Bắc Giang"},
+    {ma:"HUNGYEN",ten:"Hưng Yên",loai:"tinh",ghiChu:"Hợp nhất Hưng Yên + Thái Bình"},
+    {ma:"NINHBINH",ten:"Ninh Bình",loai:"tinh",ghiChu:"Hợp nhất Ninh Bình + Hà Nam + Nam Định"},
+    {ma:"THANHHOA",ten:"Thanh Hóa",loai:"tinh",ghiChu:"Giữ nguyên"},
+    {ma:"NGHEAN",ten:"Nghệ An",loai:"tinh",ghiChu:"Giữ nguyên"},
+    {ma:"HATINH",ten:"Hà Tĩnh",loai:"tinh",ghiChu:"Giữ nguyên"},
+    {ma:"QUANGTRI",ten:"Quảng Trị",loai:"tinh",ghiChu:"Hợp nhất Quảng Trị + Quảng Bình"},
+    {ma:"QUANGNGAI",ten:"Quảng Ngãi",loai:"tinh",ghiChu:"Hợp nhất Quảng Ngãi + Kon Tum"},
+    {ma:"GIALAI",ten:"Gia Lai",loai:"tinh",ghiChu:"Hợp nhất Gia Lai + Bình Định"},
+    {ma:"KHANHHOA",ten:"Khánh Hòa",loai:"tinh",ghiChu:"Hợp nhất Khánh Hòa + Ninh Thuận"},
+    {ma:"DAKLAK",ten:"Đắk Lắk",loai:"tinh",ghiChu:"Hợp nhất Đắk Lắk + Phú Yên"},
+    {ma:"LAMDONG",ten:"Lâm Đồng",loai:"tinh",ghiChu:"Hợp nhất Lâm Đồng + Đắk Nông + Bình Thuận"},
+    {ma:"DONGNAI",ten:"Đồng Nai",loai:"tinh",ghiChu:"Hợp nhất Đồng Nai + Bình Phước"},
+    {ma:"TAYNINH",ten:"Tây Ninh",loai:"tinh",ghiChu:"Hợp nhất Tây Ninh + Long An"},
+    {ma:"DONGTHAP",ten:"Đồng Tháp",loai:"tinh",ghiChu:"Hợp nhất Đồng Tháp + Tiền Giang"},
+    {ma:"VINHLONG",ten:"Vĩnh Long",loai:"tinh",ghiChu:"Hợp nhất Vĩnh Long + Bến Tre + Trà Vinh"},
+    {ma:"ANGIANG",ten:"An Giang",loai:"tinh",ghiChu:"Hợp nhất An Giang + Kiên Giang"},
+    {ma:"CAMAU",ten:"Cà Mau",loai:"tinh",ghiChu:"Hợp nhất Cà Mau + Bạc Liêu"},
+    {ma:"LANGSON",ten:"Lạng Sơn",loai:"tinh",ghiChu:"Giữ nguyên"},
+    {ma:"CAOBANG",ten:"Cao Bằng",loai:"tinh",ghiChu:"Giữ nguyên"},
+    {ma:"LAICHAU",ten:"Lai Châu",loai:"tinh",ghiChu:"Giữ nguyên"},
+    {ma:"DIENBIEN",ten:"Điện Biên",loai:"tinh",ghiChu:"Giữ nguyên"},
+    {ma:"SONLA",ten:"Sơn La",loai:"tinh",ghiChu:"Giữ nguyên"},
+    {ma:"QUANGNINH",ten:"Quảng Ninh",loai:"tinh",ghiChu:"Giữ nguyên"}
   ],
   yeuToNhayCam:[
     {id:"rungdacdung",ten:"Sử dụng đất/mặt nước rừng đặc dụng"},
@@ -533,18 +577,23 @@ function classify(st){
 
 function renderFormWizard(){
   const nganhOpts=DATA.nganhNghe.map(n=>`<option value="${n.ma}">${n.ten}</option>`).join("");
-  const tinhOpts=DATA.tinhThanh.map(t=>`<option value="${t.ma}">${t.ten}</option>`).join("");
+  // Group theo loại (TW trước, tỉnh sau)
+  const twList=DATA.tinhThanh.filter(t=>t.loai==="TW");
+  const tinhList=DATA.tinhThanh.filter(t=>t.loai!=="TW");
+  const twOpts=twList.map(t=>`<option value="${t.ma}">${t.ten}</option>`).join("");
+  const tinhOpts=tinhList.map(t=>`<option value="${t.ma}">${t.ten}</option>`).join("");
+  const tinhOptsFull=`<optgroup label="6 Thành phố trực thuộc Trung ương">${twOpts}</optgroup><optgroup label="28 Tỉnh">${tinhOpts}</optgroup>`;
   const nhayCamChecks=DATA.yeuToNhayCam.map(y=>`<label class="wz-check" data-ycid="${y.id}"><input type="checkbox" value="${y.id}" class="ff-nhaycam"><span>${y.ten}</span></label>`).join("");
   return `<section class="section" id="sec-form">
     <p class="section-eyebrow">Công cụ tra cứu tương tác</p>
     <h2 class="section-title">Tra cứu theo Form</h2>
-    <p class="section-desc">Điền 3 bước, kết quả cập nhật tự động bên phải.</p>
+    <p class="section-desc">Điền 3 bước, kết quả cập nhật tự động. Danh sách tỉnh/thành đầy đủ 34 đơn vị sau sáp nhập (NQ 202/2025/QH15).</p>
     <div class="wizard-grid">
       <div>
         <div class="wz-step"><div class="wz-step-head"><div class="wz-step-num">1</div><p class="wz-step-title">Quy mô và ngành nghề</p></div>
           <div class="wz-toggle" id="ffLoaiHinh"><button data-v="duan" class="active">Dự án mới</button><button data-v="coso">Cơ sở đang hoạt động</button></div>
           <div class="wz-row">
-            <div class="wz-field"><label>Tỉnh / thành phố</label><select id="ffTinh">${tinhOpts}</select></div>
+            <div class="wz-field"><label>Tỉnh / thành phố (34 đơn vị)</label><select id="ffTinh">${tinhOptsFull}</select></div>
             <div class="wz-field"><label>Ngành nghề</label><select id="ffNganh">${nganhOpts}</select></div>
           </div>
           <div class="wz-row">
@@ -576,12 +625,13 @@ function renderResultCard(r){
   const badgeClass="badge-"+r.finalNhom;
   const nhomTitle={I:"Dự án bắt buộc ĐTM — trường hợp luôn phải ĐTM",II:"Dự án bắt buộc ĐTM — có yếu tố nhạy cảm/quy mô lớn",III:"Dự án phải có Giấy phép môi trường",IV:"Dự án thuộc diện ĐKMT hoặc miễn trừ"}[r.finalNhom];
   function oblig(l,on,tOn,tOff){return `<div class="oblig-row"><span class="oblig-label">${l}:</span><span class="oblig-val ${on?'green':'grey'}">${on?tOn:tOff}</span></div>`;}
+  const tinhInfo=r.tinh?`<span style="color:#8A9389">(${r.tinh.ghiChu})</span>`:"";
   return `<div class="result-card">
     <div class="result-top">
       <span class="result-badge ${badgeClass}">GROUP ${r.finalNhom}</span>
       <div class="result-canccu">Căn cứ: Luật BVMT 2020 &amp; <strong>NQ 66.19/2026/NQ-CP</strong></div>
       <p class="result-title">${nhomTitle}</p>
-      <p class="result-desc">${r.nganh.ten} — tại ${r.tinh?r.tinh.ten:"—"}.</p>
+      <p class="result-desc">${r.nganh.ten} — tại ${r.tinh?r.tinh.ten:"—"} ${tinhInfo}</p>
       <div class="result-pills">
         <span class="pill">Nước thải: <strong>${r.chiTietNguon.nt.nhan}</strong></span>
         <span class="pill">Khí thải: <strong>${r.chiTietNguon.kt.nhan}</strong></span>
@@ -624,7 +674,7 @@ function updateFormResult(){
   const r=classify(st);
   document.getElementById("resultCard").innerHTML=renderResultCard(r);
   const tinhObj=DATA.tinhThanh.find(t=>t.ma===st.tinh);
-  document.getElementById("ffTinhGhiChu").textContent=tinhObj?("Ghi chú: "+tinhObj.ghiChu):"";
+  document.getElementById("ffTinhGhiChu").textContent=tinhObj?("📌 "+tinhObj.ghiChu):"";
   document.querySelectorAll(".result-tab").forEach(tab=>tab.addEventListener("click",()=>goToTarget(tab.dataset.scrollto)));
 }
 
@@ -644,6 +694,25 @@ function initFormWizard(){
   updateFormResult();
 }
 
+function renderTinhThanh(){
+  const twList=DATA.tinhThanh.filter(t=>t.loai==="TW");
+  const tinhList=DATA.tinhThanh.filter(t=>t.loai!=="TW");
+  const twRows=twList.map(t=>`<tr><td class="code">${t.ma}</td><td><strong>${t.ten}</strong></td><td>${t.ghiChu}</td></tr>`).join("");
+  const tinhRows=tinhList.map(t=>`<tr><td class="code">${t.ma}</td><td><strong>${t.ten}</strong></td><td>${t.ghiChu}</td></tr>`).join("");
+  return `<section class="section" id="sec-tinhthanh">
+    <p class="section-eyebrow">Danh mục hành chính</p>
+    <h2 class="section-title">34 Tỉnh, Thành phố sau sáp nhập</h2>
+    <p class="section-desc">Theo Nghị quyết 202/2025/QH15 (hiệu lực 01/7/2025). Cả nước có 6 thành phố trực thuộc Trung ương và 28 tỉnh.</p>
+    <h3 style="font-family:var(--sans);font-size:15px;margin:22px 0 10px;color:var(--forest-deep);">🏙️ 6 Thành phố trực thuộc Trung ương</h3>
+    <table class="tbl"><thead><tr><th style="width:130px">Mã</th><th style="width:220px">Tên</th><th>Ghi chú sáp nhập</th></tr></thead><tbody>${twRows}</tbody></table>
+    <h3 style="font-family:var(--sans);font-size:15px;margin:22px 0 10px;color:var(--forest-deep);">🏞️ 28 Tỉnh</h3>
+    <table class="tbl"><thead><tr><th style="width:130px">Mã</th><th style="width:220px">Tên</th><th>Ghi chú sáp nhập</th></tr></thead><tbody>${tinhRows}</tbody></table>
+    <div class="update" style="margin-top:20px;">
+      <strong>Lưu ý quan trọng:</strong> Sau sáp nhập (01/7/2025), cả nước <strong>không còn cấp huyện</strong> — chỉ còn 2 cấp: <strong>tỉnh → xã/phường/đặc khu</strong>. Mọi thủ tục môi trường (ĐTM, GPMT, ĐKMT) đều áp dụng theo mô hình 2 cấp này.
+    </div>
+  </section>`;
+}
+
 function renderCongTy(){
   const STATUS_TEXT={green:"Đã hoàn thành",yellow:"Đang hoàn thiện",red:"Chưa có văn bản"};
   const counts={green:0,yellow:0,red:0};
@@ -652,7 +721,7 @@ function renderCongTy(){
   const pctGreen=Math.round((counts.green/total)*100);
   const dashboard=`<div class="stat-dash">
     <div class="stat-ring-card"><div class="stat-ring-num">${pctGreen}%</div></div>
-    <div class="stat-card"><div class="stat-num">${total}</div><div class="stat-label">Tổng số</div></div>
+    <div class="stat-card"><div class="stat-num">${total}</div><div class="stat-label">Tổng số nhà máy</div></div>
     <div class="stat-card st-green"><div class="stat-num">${counts.green}</div><div class="stat-label">Đã hoàn thành</div></div>
     <div class="stat-card st-yellow"><div class="stat-num">${counts.yellow}</div><div class="stat-label">Đang hoàn thiện</div></div>
     <div class="stat-card st-red"><div class="stat-num">${counts.red}</div><div class="stat-label">Chưa có</div></div>
@@ -683,7 +752,7 @@ function renderCongTy(){
   return `<section class="section" id="sec-congty">
     <p class="section-eyebrow">Cơ sở dữ liệu nội bộ — MT-1P</p>
     <h2 class="section-title">Danh sách &amp; Thủ tục Môi trường của Công ty</h2>
-    <p class="section-desc">Trạng thái thủ tục môi trường của ${total} nhà máy, trạm cấp nước. Click "Xem GPMT"/"Xem ĐKMT" để mở file PDF gốc.</p>
+    <p class="section-desc">Trạng thái thủ tục môi trường của ${total} nhà máy. Click "Xem GPMT"/"Xem ĐKMT" để mở file PDF gốc.</p>
     <div id="dataSourceBadge" class="data-source-badge live">🟢 Dữ liệu trực tuyến</div>
     ${dashboard}
     <div class="status-legend">
@@ -821,7 +890,7 @@ function renderVipham(){
 }
 
 document.getElementById("content").innerHTML=
-  renderCongTy()+renderFormWizard()+renderTracuunhanh()+renderCanCu()+renderCoQuan()+
+  renderCongTy()+renderFormWizard()+renderTracuunhanh()+renderCanCu()+renderTinhThanh()+renderCoQuan()+
   renderNhom()+renderMatrix()+renderThuTuc("dtm")+renderThuTuc("gpmt")+renderThuTuc("dkmt")+
   renderLich()+renderBieumau()+renderVipham();
 initFormWizard();
@@ -862,7 +931,7 @@ document.getElementById("railToggle").addEventListener("click",toggleRail);
 railBackdrop.addEventListener("click",closeRail);
 if(window.innerWidth>880)openRail();
 
-const THEME_KEY="tracuu_mt_theme_v31";
+const THEME_KEY="tracuu_mt_theme_v32";
 const iconMoon=document.getElementById("iconMoon");
 const iconSun=document.getElementById("iconSun");
 function applyTheme(t){document.documentElement.setAttribute("data-theme",t);iconMoon.style.display=t==="dark"?"none":"";iconSun.style.display=t==="dark"?"":'none';}
@@ -916,6 +985,7 @@ DATA.lich.forEach(r=>idx("Lịch",r[1],r[0]+" "+r[2],"sec-lich"));
 Object.keys(DATA.bieumau).forEach(k=>DATA.bieumau[k].items.forEach(it=>idx("Biểu mẫu "+k,it[0],it[1],"sec-bieumau")));
 DATA.vipham.forEach(r=>idx("Vi phạm",r[0],r[1]+" "+r[2],"sec-vipham"));
 DATA.congTyNhaMay.forEach(p=>idx("Công ty",p.ten,p.diaDiem+" — "+p.congSuat,"sec-congty"));
+DATA.tinhThanh.forEach(t=>idx("Tỉnh/Thành",t.ten,t.ghiChu,"sec-tinhthanh"));
 
 const searchInput=document.getElementById("searchInput");
 const searchResults=document.getElementById("searchResults");
