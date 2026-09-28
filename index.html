@@ -157,6 +157,18 @@ html[data-theme="dark"] .link-btn.baocao-file{background:var(--purple-bg);color:
 html[data-theme="dark"] .link-btn.gpkt-file{background:var(--teal-bg);color:var(--teal);}
 html[data-theme="dark"] .link-btn.quantrac-file{background:#3A2E18;color:#E0A94E;}
 html[data-theme="dark"] .link-btn.khac-file{background:#2A2A2A;color:#BBB;}
+
+/* === Nút "chưa có file" — hiển thị mờ, không click được === */
+.link-btn-empty{
+  display:inline-flex;align-items:center;gap:5px;
+  font-family:var(--sans);font-size:12px;font-weight:700;
+  color:#B8BEB4;background:transparent;
+  border:1px dashed #D7DBD1;border-radius:5px;padding:4px 9px;
+  cursor:not-allowed;opacity:.7;
+}
+html[data-theme="dark"] .link-btn-empty{color:#5A635A;border-color:#3A423A;}
+
+/* === Dropdown nhiều file === */
 .file-group{position:relative;display:inline-block;}
 .file-group-btn{position:relative;}
 .file-group-btn::after{content:" ▾";font-size:9px;}
@@ -166,11 +178,14 @@ html[data-theme="dark"] .link-btn.khac-file{background:#2A2A2A;color:#BBB;}
 .file-dropdown-item:last-child{border-bottom:none;}
 .file-dropdown-item:hover{background:var(--paper);}
 .file-dropdown-item small{color:var(--ink-soft);font-size:10.5px;font-weight:600;}
+
+/* === Khối tài liệu nhà máy === */
 .plant-files{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);}
 .plant-files-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:6px;}
 .plant-files-row:last-child{margin-bottom:0;}
 .plant-files-label{font-size:10.5px;font-weight:700;color:#8A9389;text-transform:uppercase;letter-spacing:.05em;min-width:110px;}
-.plant-files-empty{font-size:11.5px;color:#B8BEB4;font-style:italic;}
+
+/* Wizard */
 .wizard-grid{display:grid;grid-template-columns:1fr 380px;gap:20px;align-items:start;}
 @media (max-width:980px){.wizard-grid{grid-template-columns:1fr;}}
 .wz-step{background:var(--paper-deep);border:1px solid var(--line-soft);border-radius:10px;padding:18px 20px;margin-bottom:16px;font-family:var(--sans);box-shadow:var(--shadow-sm);}
@@ -239,7 +254,6 @@ html[data-theme="dark"] .link-btn.khac-file{background:#2A2A2A;color:#BBB;}
 .status-legend{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);margin-bottom:14px;}
 .data-source-badge{display:inline-block;font-family:var(--sans);font-size:11.5px;font-weight:600;padding:5px 12px;border-radius:6px;margin:8px 0 4px;}
 .data-source-badge.live{background:#E6F5EC;color:#1E7A45;}
-.data-source-badge.fallback{background:#FCF1D8;color:#95700E;}
 .status-filter{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;}
 .plant-card{background:var(--paper-deep);border:1px solid var(--line-soft);border-left:4px solid #B9C0B4;border-radius:8px;padding:13px 16px;margin-bottom:10px;font-family:var(--sans);box-shadow:var(--shadow-sm);}
 .plant-card.st-green{border-left-color:#2E9E5B;}
@@ -280,7 +294,7 @@ html[data-theme="dark"] .link-btn.khac-file{background:#2A2A2A;color:#BBB;}
       <div class="rail-logo">MT</div>
       <div><p class="rail-brand">Tra cứu Thủ tục<br>Môi trường</p></div>
     </div>
-    <p class="rail-sub">Công ty CP Cấp nước &amp; Môi trường Đô thị Đồng Tháp — v3.4, 09/2026</p>
+    <p class="rail-sub">Công ty CP Cấp nước &amp; Môi trường Đô thị Đồng Tháp — v3.5, 09/2026</p>
 
     <div class="rail-group">
       <p class="rail-label">Công ty</p>
@@ -340,21 +354,19 @@ html[data-theme="dark"] .link-btn.khac-file{background:#2A2A2A;color:#BBB;}
     <div class="content" id="content"></div>
 
     <div class="foot">
-      Công cụ tra cứu — Sổ tay Hướng dẫn Thủ tục Môi trường v3.4 (09/2026). Hệ thống 6 loại hồ sơ: GPMT, ĐKMT, Báo cáo BVMT, GPKT, KQ Quan trắc, Tài liệu khác.
+      Công cụ tra cứu — Sổ tay Hướng dẫn Thủ tục Môi trường v3.5 (09/2026). Mỗi nhà máy hiển thị đủ 6 loại hồ sơ; nút mờ = chưa có file.
     </div>
   </div>
 </div>
 
 <script>
 /* =========================================================================
-   DATA — 28 nhà máy, MỖI nhà máy có ĐỦ 6 trường file:
-   fileGPMT, fileDKMT, fileBaoCao, fileGPKT, fileQuanTrac, fileKhac
-   - Giá trị "" = chưa có file (nút tự ẩn)
-   - Giá trị "url" = có 1 file
-   - Giá trị [{url, nhan}, ...] = nhiều file (dropdown)
+   DATA — 28 nhà máy, MỖI nhà máy có ĐỦ 6 trường file.
+   Trạng thái: ""  = chưa có file (nút mờ)
+               "url" = 1 file
+               [{url,nhan},...] = nhiều file (dropdown)
    ========================================================================= */
 const FALLBACK_CONGTY = [
-  // ============ NHÓM 1: ĐÃ CÓ HỒ SƠ ĐẦY ĐỦ ============
   {"id":"nm01","ten":"Nhà máy nước mặt Đông Bình","diaDiem":"Khu phố Đông Bình, phường Cao Lãnh, tỉnh Đồng Tháp","congSuat":"40.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"ĐKMT đã được UBND phường Cao Lãnh tiếp nhận (CV 90/UBND-KTHTĐT ngày 13/01/2025).",
     "fileGPMT":"","fileDKMT":"files/dkmt/nm01-dong-binh.pdf",
     "fileBaoCao":[{"url":"files/baocao/nm01-baocao-2024.pdf","nhan":"Báo cáo 2024"},{"url":"files/baocao/nm01-baocao-2025.pdf","nhan":"Báo cáo 2025"}],
@@ -362,160 +374,82 @@ const FALLBACK_CONGTY = [
     "fileQuanTrac":[{"url":"files/quantrac/nm01-qt-2025-Q4.pdf","nhan":"QT Q4/2025"}],
     "fileKhac":"",
     "status":{"gpmt":"green"}},
-
-  // ============ 27 NHÀ MÁY CÒN LẠI — ĐÃ THÊM ĐỦ 6 TRƯỜNG ============
   {"id":"nm02","ten":"Nhà máy nước mặt Tân Long","diaDiem":"Khu phố Bến Bắc, phường Cao Lãnh","congSuat":"6.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"ĐKMT đã được UBND phường Cao Lãnh tiếp nhận (CV 1927/UBND-KTHTĐT ngày 07/11/2025).",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm02-tan-long.pdf",
-    "fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"",
-    "status":{"gpmt":"green"}},
-
+    "fileGPMT":"","fileDKMT":"files/dkmt/nm02-tan-long.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
   {"id":"nm03","ten":"Nhà máy nước mặt Mỹ Hiệp","diaDiem":"Cụm CN Mỹ Hiệp, xã Mỹ Hiệp","congSuat":"5.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Mỹ Hiệp tiếp nhận ĐKMT (CV 04/UBND-HC ngày 19/6/2025).",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm03-my-hiep.pdf",
-    "fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"",
-    "status":{"gpmt":"green"}},
-
+    "fileGPMT":"","fileDKMT":"files/dkmt/nm03-my-hiep.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
   {"id":"nm04","ten":"Nhà máy nước mặt Mỹ An","diaDiem":"Ấp Mỹ An 2, xã Tháp Mười","congSuat":"13.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Tháp Mười tiếp nhận ĐKMT (CV 974/UBND-KT ngày 11/4/2026).",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm04-my-an.pdf",
-    "fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"",
-    "status":{"gpmt":"green"}},
-
+    "fileGPMT":"","fileDKMT":"files/dkmt/nm04-my-an.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
   {"id":"nm05","ten":"Trạm cấp nước Mỹ Thọ","diaDiem":"Ấp Mỹ Tây, xã Mỹ Thọ","congSuat":"10.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Phòng KT xã Mỹ Thọ xác nhận thuộc đối tượng MIỄN ĐKMT.",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm05-my-tho.pdf",
-    "fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"",
-    "status":{"gpmt":"green"}},
-
+    "fileGPMT":"","fileDKMT":"files/dkmt/nm05-my-tho.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
   {"id":"nm06","ten":"Trạm cấp nước Trường Xuân","diaDiem":"Xã Trường Xuân","congSuat":"2.500 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Trường Xuân tiếp nhận ĐKMT (CV 386/UBND ngày 28/5/2025).",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm06-truong-xuan.pdf",
-    "fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"",
-    "status":{"gpmt":"green"}},
-
+    "fileGPMT":"","fileDKMT":"files/dkmt/nm06-truong-xuan.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
   {"id":"nm07","ten":"Nhà máy nước mặt Trần Quốc Toản","diaDiem":"QL30, phường Mỹ Ngãi","congSuat":"7.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Chưa có văn bản/GPMT — cần thực hiện thủ tục môi trường.",
-    "fileGPMT":"","fileDKMT":"",
-    "fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"",
-    "status":{"gpmt":"red"}},
-
+    "fileGPMT":"","fileDKMT":"","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"red"}},
   {"id":"nm08","ten":"Trạm cấp nước Tân Nghĩa","diaDiem":"Chợ Tân Nghĩa, phường Mỹ Ngãi","congSuat":"2.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Chưa có văn bản/GPMT — cần thực hiện thủ tục môi trường.",
-    "fileGPMT":"","fileDKMT":"",
-    "fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"",
-    "status":{"gpmt":"red"}},
-
+    "fileGPMT":"","fileDKMT":"","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"red"}},
   {"id":"nm09","ten":"Nhà máy nước Sa Đéc","diaDiem":"207B Trần Hưng Đạo, P. Sa Đéc","congSuat":"17.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND phường Sa Đéc tiếp nhận ĐKMT (TB 105/TB-UBND ngày 18/5/2026).",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm09-sa-dec.pdf",
-    "fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"",
-    "status":{"gpmt":"green"}},
-
+    "fileGPMT":"","fileDKMT":"files/dkmt/nm09-sa-dec.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
   {"id":"nm10","ten":"Nhà máy nước KCN C","diaDiem":"KCN C, phường Tân Quy Đông","congSuat":"15.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND phường Tân Quy Đông tiếp nhận ĐKMT (TB 30/TB-UBND ngày 24/4/2025).",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm10-kcn-c.pdf",
-    "fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"",
-    "status":{"gpmt":"green"}},
-
+    "fileGPMT":"","fileDKMT":"files/dkmt/nm10-kcn-c.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
   {"id":"nm11","ten":"Nhà máy nước mặt Nha Mân","diaDiem":"QL80, xã Tân Nhuận Đông","congSuat":"7.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Tân Nhuận Đông xác nhận ĐKMT (CV 273/UBND-KT ngày 30/5/2025).",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm11-nha-man.pdf",
-    "fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"",
-    "status":{"gpmt":"green"}},
-
+    "fileGPMT":"","fileDKMT":"files/dkmt/nm11-nha-man.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
   {"id":"nm12","ten":"Nhà máy nước mặt Nha Mân 2","diaDiem":"QL80, xã Tân Nhuận Đông","congSuat":"5.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Tân Nhuận Đông xác nhận ĐKMT (CV 272/UBND-KT ngày 30/5/2025).",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm12-nha-man-2.pdf",
-    "fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"",
-    "status":{"gpmt":"green"}},
-
+    "fileGPMT":"","fileDKMT":"files/dkmt/nm12-nha-man-2.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
   {"id":"nm13","ten":"Nhà máy nước mặt An Hiệp","diaDiem":"Ấp Tân Thạnh 2, xã Phú Hựu","congSuat":"2.500 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Phú Hựu tiếp nhận ĐKMT.",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm13-an-hiep.pdf",
-    "fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"",
-    "status":{"gpmt":"green"}},
-
+    "fileGPMT":"","fileDKMT":"files/dkmt/nm13-an-hiep.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
   {"id":"nm14","ten":"Nhà máy nước mặt An Phú Thuận","diaDiem":"Xã Phú Hựu","congSuat":"2.500 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Chưa có văn bản/GPMT — cần thực hiện thủ tục môi trường.",
-    "fileGPMT":"","fileDKMT":"",
-    "fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"",
-    "status":{"gpmt":"red"}},
-
+    "fileGPMT":"","fileDKMT":"","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"red"}},
   {"id":"nm15","ten":"Nhà máy nước mặt Bình Thành","diaDiem":"Xã Bình Thành, huyện Lấp Vò","congSuat":"4.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Đã có GPMT số 01/GPMT-UBND ngày 21/4/2025 của UBND huyện Lấp Vò.",
     "fileGPMT":"files/gpmt/nm15-binh-thanh.pdf","fileDKMT":"",
     "fileBaoCao":[{"url":"files/baocao/nm15-baocao-2025.pdf","nhan":"Báo cáo 2025"}],
     "fileGPKT":[{"url":"files/gpkt/nm15-gpkt.pdf","nhan":"GPKT sông Xáng"}],
-    "fileQuanTrac":"","fileKhac":"",
-    "status":{"gpmt":"green"}},
-
+    "fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
   {"id":"nm16","ten":"Nhà máy nước mặt Lộ Tiểu","diaDiem":"QL80, xã Phú Hựu","congSuat":"5.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Đã có ĐKMT được UBND xã tiếp nhận.",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm16-lo-tieu.pdf",
-    "fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"",
-    "status":{"gpmt":"green"}},
-
+    "fileGPMT":"","fileDKMT":"files/dkmt/nm16-lo-tieu.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
   {"id":"nm17","ten":"Nhà máy nước mặt Mương Điều","diaDiem":"Chợ Mương Điều, xã Tân Khánh Trung","congSuat":"3.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Chưa có văn bản/GPMT — cần thực hiện thủ tục môi trường.",
-    "fileGPMT":"","fileDKMT":"",
-    "fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"",
-    "status":{"gpmt":"red"}},
-
+    "fileGPMT":"","fileDKMT":"","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"red"}},
   {"id":"nm18","ten":"Nhà máy nước mặt Khánh Mỹ","diaDiem":"Xã Tân Khánh Trung","congSuat":"2.500 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Chưa có văn bản/GPMT — cần thực hiện thủ tục môi trường.",
-    "fileGPMT":"","fileDKMT":"",
-    "fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"",
-    "status":{"gpmt":"red"}},
-
+    "fileGPMT":"","fileDKMT":"","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"red"}},
   {"id":"nm19","ten":"Nhà máy nước mặt Vĩnh Thạnh","diaDiem":"Ấp Hòa Thuận, xã Lấp Vò","congSuat":"500 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Lấp Vò tiếp nhận ĐKMT (TB 38/TB-UBND ngày 11/3/2026).",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm19-vinh-thanh.pdf",
-    "fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"",
-    "status":{"gpmt":"green"}},
-
+    "fileGPMT":"","fileDKMT":"files/dkmt/nm19-vinh-thanh.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
   {"id":"nm20","ten":"Nhà máy nước mặt Phú Hựu","diaDiem":"Xã Phú Hựu, huyện Châu Thành","congSuat":"5.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Đã có GPMT số 27/GPMT-UBND ngày 26/6/2025 của UBND huyện Châu Thành.",
     "fileGPMT":"files/gpmt/nm20-phu-huu.pdf","fileDKMT":"",
     "fileBaoCao":[{"url":"files/baocao/nm20-baocao-2025.pdf","nhan":"Báo cáo 2025"}],
     "fileGPKT":"",
     "fileQuanTrac":[{"url":"files/quantrac/nm20-qt-2025-Q3.pdf","nhan":"QT Q3/2025"},{"url":"files/quantrac/nm20-qt-2025-Q4.pdf","nhan":"QT Q4/2025"}],
-    "fileKhac":"",
-    "status":{"gpmt":"green"}},
-
+    "fileKhac":"","status":{"gpmt":"green"}},
   {"id":"nm21","ten":"Nhà máy nước mặt Tân Phú Trung","diaDiem":"Xã Tân Phú Trung","congSuat":"5.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Đã có ĐKMT được UBND xã tiếp nhận.",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm21-tan-phu-trung.pdf",
-    "fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"",
-    "status":{"gpmt":"green"}},
-
+    "fileGPMT":"","fileDKMT":"files/dkmt/nm21-tan-phu-trung.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
   {"id":"nm22","ten":"Nhà máy nước mặt Tân Dương","diaDiem":"KDC Tân Dương, xã Tân Dương","congSuat":"3.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Chưa có văn bản/GPMT — cần thực hiện thủ tục môi trường.",
-    "fileGPMT":"","fileDKMT":"",
-    "fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"",
-    "status":{"gpmt":"red"}},
-
+    "fileGPMT":"","fileDKMT":"","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"red"}},
   {"id":"nm23","ten":"Nhà máy nước mặt Hồng Ngự","diaDiem":"Đường Hùng Vương, Kp An Thạnh, P. An Bình","congSuat":"17.500 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Đã có GPMT 1732/GPMT-UBND ngày 05/6/2025. Sau đó ĐKMT theo NQ 66.19/2026.",
     "fileGPMT":"","fileDKMT":"files/dkmt/nm23-hong-ngu.pdf",
     "fileBaoCao":[{"url":"files/baocao/nm23-baocao-2025.pdf","nhan":"Báo cáo 2025"}],
     "fileGPKT":[{"url":"files/gpkt/nm23-gpkt.pdf","nhan":"GPKT 615/GP-UBND"}],
-    "fileQuanTrac":"","fileKhac":"",
-    "status":{"gpmt":"green"}},
-
+    "fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
   {"id":"nm24","ten":"Trạm cấp nước Thường Phước","diaDiem":"Đường Trường Chinh, ấp Thường Thới, xã Thường Phước","congSuat":"6.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Thường Phước tiếp nhận ĐKMT ngày 24/9/2026.",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm24-thuong-phuoc.pdf",
-    "fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"",
-    "status":{"gpmt":"green"}},
-
+    "fileGPMT":"","fileDKMT":"files/dkmt/nm24-thuong-phuoc.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
   {"id":"nm25","ten":"Nhà máy nước mặt An Long","diaDiem":"Ấp Phú Lợi, xã An Long","congSuat":"6.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã An Long tiếp nhận ĐKMT (CV 947/UBND-KT ngày 10/6/2026).",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm25-an-long.pdf",
-    "fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"",
-    "status":{"gpmt":"green"}},
-
+    "fileGPMT":"","fileDKMT":"files/dkmt/nm25-an-long.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
   {"id":"nm26","ten":"Nhà máy nước mặt Bình Phú","diaDiem":"Ấp Gò Da, xã Bình Phú, huyện Tân Hồng","congSuat":"6.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Đã có GPMT số 83/GPMT-UBND ngày 29/5/2025 của UBND huyện Tân Hồng.",
     "fileGPMT":"files/gpmt/nm26-binh-phu.pdf","fileDKMT":"",
     "fileBaoCao":"","fileGPKT":"",
     "fileQuanTrac":[{"url":"files/quantrac/nm26-qt-2025-Q4.pdf","nhan":"QT Q4/2025"}],
-    "fileKhac":"",
-    "status":{"gpmt":"green"}},
-
+    "fileKhac":"","status":{"gpmt":"green"}},
   {"id":"nm27","ten":"Nhà máy nước mặt Tràm Chim","diaDiem":"Ấp 2, xã Tràm Chim","congSuat":"6.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Tràm Chim tiếp nhận ĐKMT (CV 1663/UBND-KT ngày 07/8/2026).",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm27-tram-chim.pdf",
-    "fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"",
-    "status":{"gpmt":"green"}},
-
+    "fileGPMT":"","fileDKMT":"files/dkmt/nm27-tram-chim.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
   {"id":"nm28","ten":"Nhà máy nước mặt Thanh Bình","diaDiem":"Xã Thanh Bình","congSuat":"8.500 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Thanh Bình tiếp nhận ĐKMT ngày 12/11/2025.",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm28-thanh-binh.pdf",
-    "fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"",
-    "status":{"gpmt":"green"}}
+    "fileGPMT":"","fileDKMT":"files/dkmt/nm28-thanh-binh.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}}
 ];
 
 const LOAI_HOSO = [
-  {key:"fileGPMT",     nhan:"GPMT",           icon:"📄", css:"gpmt-file",     moTa:"Giấy phép môi trường"},
-  {key:"fileDKMT",     nhan:"ĐKMT",           icon:"📋", css:"dkmt-file",     moTa:"Đăng ký môi trường / Thông báo tiếp nhận"},
-  {key:"fileBaoCao",   nhan:"Báo cáo BVMT",   icon:"📊", css:"baocao-file",   moTa:"Báo cáo công tác BVMT định kỳ"},
-  {key:"fileGPKT",     nhan:"GPKT",           icon:"💧", css:"gpkt-file",     moTa:"Giấy phép khai thác, sử dụng nước"},
-  {key:"fileQuanTrac", nhan:"KQ Quan trắc",   icon:"🧪", css:"quantrac-file", moTa:"Kết quả quan trắc môi trường định kỳ"},
-  {key:"fileKhac",     nhan:"Tài liệu khác",  icon:"📁", css:"khac-file",     moTa:"PCCC, XLNT, sự cố môi trường…"}
+  {key:"fileGPMT",     nhan:"GPMT",           icon:"📄", css:"gpmt-file",     moTa:"Giấy phép môi trường",         mauSac:"#2E9E5B"},
+  {key:"fileDKMT",     nhan:"ĐKMT",           icon:"📋", css:"dkmt-file",     moTa:"Đăng ký môi trường",           mauSac:"#2B4A63"},
+  {key:"fileBaoCao",   nhan:"Báo cáo BVMT",   icon:"📊", css:"baocao-file",   moTa:"Báo cáo công tác BVMT định kỳ", mauSac:"#5B3E7F"},
+  {key:"fileGPKT",     nhan:"GPKT",           icon:"💧", css:"gpkt-file",     moTa:"Giấy phép khai thác nước",      mauSac:"#1F6B6B"},
+  {key:"fileQuanTrac", nhan:"KQ Quan trắc",   icon:"🧪", css:"quantrac-file", moTa:"Kết quả quan trắc môi trường",  mauSac:"#D4A017"},
+  {key:"fileKhac",     nhan:"Tài liệu khác",  icon:"📁", css:"khac-file",     moTa:"PCCC, XLNT, sự cố môi trường…", mauSac:"#555555"}
 ];
 
 const DATA = {
@@ -611,26 +545,18 @@ const DATA = {
     ]}
   },
   hoSoVanHanh:[
-    {
-      key:"baocao", nhan:"Báo cáo công tác BVMT định kỳ", icon:"📊", mau:"Mẫu 05A (có GPMT) / 05B (chỉ ĐKMT)", tanSuat:"1 lần/năm, trước 15/01 năm tiếp theo", coQuan:"Sở NN&MT tỉnh (nếu GPMT) hoặc UBND cấp xã (nếu ĐKMT)",
+    {key:"baocao",nhan:"Báo cáo công tác BVMT định kỳ",icon:"📊",mau:"Mẫu 05A (có GPMT) / 05B (chỉ ĐKMT)",tanSuat:"1 lần/năm, trước 15/01 năm tiếp theo",coQuan:"Sở NN&MT tỉnh (nếu GPMT) hoặc UBND cấp xã (nếu ĐKMT)",
       noiDung:["Kết quả hoạt động BVMT năm báo cáo","Số liệu phát sinh chất thải (nước thải, khí thải, CTR, CTNH)","Kết quả quan trắc định kỳ","Tình hình vận hành công trình XLMT","Sự cố môi trường và biện pháp khắc phục","Kế hoạch BVMT năm tiếp theo"],
-      luuY:"Nếu chậm nộp hoặc nộp muộn → căn cứ để cơ quan chức năng kiểm tra, xử phạt hành chính."
-    },
-    {
-      key:"gpkt", nhan:"Giấy phép khai thác, sử dụng nước", icon:"💧", mau:"Mẫu tại NĐ 02/2023/NĐ-CP (nếu khai thác ≥ 10 m³/ngày đêm)", tanSuat:"Hiệu lực 10–15 năm, phải xin gia hạn trước 90 ngày", coQuan:"Sở NN&MT tỉnh (khai thác nước mặt ≥100.000 m³/ngày; nước ngầm ≥3.000 m³/ngày); UBND cấp xã (nhỏ hơn)",
+      luuY:"Nếu chậm nộp hoặc nộp muộn → căn cứ để cơ quan chức năng kiểm tra, xử phạt hành chính."},
+    {key:"gpkt",nhan:"Giấy phép khai thác, sử dụng nước",icon:"💧",mau:"Mẫu tại NĐ 02/2023/NĐ-CP",tanSuat:"Hiệu lực 10–15 năm, gia hạn trước 90 ngày",coQuan:"Sở NN&MT tỉnh hoặc UBND cấp xã tùy lưu lượng",
       noiDung:["Vị trí, lưu lượng khai thác","Phương thức khai thác","Chế độ khai thác theo mùa","Yêu cầu bảo vệ nguồn nước","Nghĩa vụ kê khai, báo cáo"],
-      luuY:"Nhà máy nước mặt phải có GPKT trước khi đi vào vận hành chính thức. Không có = hoạt động không phép."
-    },
-    {
-      key:"quantrac", nhan:"Kết quả quan trắc môi trường định kỳ", icon:"🧪", mau:"Theo tần suất trong GPMT (thường 3–6 tháng/lần)", tanSuat:"Theo GPMT", coQuan:"Lưu nội bộ + nộp kèm Báo cáo BVMT định kỳ",
-      noiDung:["Kết quả nước thải sau xử lý","Kết quả khí thải (nếu có)","Kết quả nước mặt (đầu vào)","Kết quả bùn thải","Chứng thư hiệu chuẩn thiết bị lấy mẫu","Thông tin đơn vị lấy mẫu (được cấp phép)"],
-      luuY:"Kết quả quan trắc do đơn vị đủ điều kiện thực hiện. Sai lệch số liệu → bị coi là vi phạm."
-    },
-    {
-      key:"khac", nhan:"Tài liệu khác", icon:"📁", mau:"Đa dạng", tanSuat:"Theo phát sinh", coQuan:"Lưu nội bộ",
+      luuY:"Nhà máy nước mặt phải có GPKT trước khi vận hành chính thức."},
+    {key:"quantrac",nhan:"Kết quả quan trắc môi trường định kỳ",icon:"🧪",mau:"Theo tần suất GPMT (3–6 tháng/lần)",tanSuat:"Theo GPMT",coQuan:"Lưu nội bộ + nộp kèm Báo cáo BVMT định kỳ",
+      noiDung:["Kết quả nước thải sau xử lý","Kết quả khí thải (nếu có)","Kết quả nước mặt (đầu vào)","Kết quả bùn thải","Chứng thư hiệu chuẩn thiết bị lấy mẫu"],
+      luuY:"Sai lệch số liệu → bị coi là vi phạm."},
+    {key:"khac",nhan:"Tài liệu khác",icon:"📁",mau:"Đa dạng",tanSuat:"Theo phát sinh",coQuan:"Lưu nội bộ",
       noiDung:["Hồ sơ PCCC","Sổ giao nhận CTNH / CTR công nghiệp","Biên bản bàn giao chất thải","Báo cáo đột xuất sự cố","Chứng từ xử lý bùn thải"],
-      luuY:"Cần lưu tối thiểu 5 năm theo quy định về thời hạn lưu trữ hồ sơ BVMT."
-    }
+      luuY:"Lưu tối thiểu 5 năm theo quy định."}
   ],
   lich:[
     ["Trước 15/01 năm tiếp theo","Nộp Báo cáo BVMT định kỳ","Sở NN&MT tỉnh / UBND xã"],
@@ -751,14 +677,20 @@ function chuanHoaFile(val){
   return [];
 }
 
+/* Render 1 nút file. Nếu chưa có file → nút mờ "Chưa có". */
 function renderFileGroup(plant, loai){
   const files = chuanHoaFile(plant[loai.key]);
-  if(files.length === 0) return "";
+  // === CHƯA CÓ FILE → hiển thị nút mờ ===
+  if(files.length === 0){
+    return `<span class="link-btn-empty" title="Chưa có file ${loai.moTa}">${loai.icon} ${loai.nhan}: chưa có</span>`;
+  }
+  // === CÓ 1 FILE ===
   if(files.length === 1){
     const f = files[0];
     const nhan = f.nhan ? `${loai.icon} ${loai.nhan} — ${f.nhan}` : `${loai.icon} Xem ${loai.nhan}`;
     return `<a class="link-btn ${loai.css}" href="${f.url}" target="_blank" rel="noopener" title="${loai.moTa}">${nhan}</a>`;
   }
+  // === CÓ NHIỀU FILE → dropdown ===
   const items = files.map(f=>`<a class="file-dropdown-item" href="${f.url}" target="_blank" rel="noopener"><span>${f.nhan||f.url.split('/').pop()}</span><small>↗</small></a>`).join("");
   return `<div class="file-group">
     <button class="link-btn ${loai.css} file-group-btn" data-dropdown="dd-${plant.id}-${loai.key}">${loai.icon} ${loai.nhan} (${files.length})</button>
@@ -911,6 +843,7 @@ function initFormWizard(){
   updateFormResult();
 }
 
+/* ===== Tab Công ty — TẤT CẢ 28 nhà máy hiển thị đủ 6 nút ===== */
 function renderCongTy(){
   const STATUS_TEXT={green:"Đã hoàn thành",yellow:"Đang hoàn thiện",red:"Chưa có văn bản"};
   const counts={green:0,yellow:0,red:0};
@@ -937,13 +870,10 @@ function renderCongTy(){
     <button class="form-chip" data-pf="red">🔴 Chưa có (${counts.red})</button>`;
   const cards=DATA.congTyNhaMay.map(p=>{
     const st=p.status.gpmt;
-    // Nhóm 1: Hồ sơ pháp lý
-    const filesPhapLy = LOAI_HOSO.filter(l=>l.key==="fileGPMT"||l.key==="fileDKMT").map(l=>renderFileGroup(p,l)).filter(Boolean).join("");
-    // Nhóm 2: Hồ sơ vận hành
-    const filesVanHanh = LOAI_HOSO.filter(l=>l.key!=="fileGPMT"&&l.key!=="fileDKMT").map(l=>renderFileGroup(p,l)).filter(Boolean).join("");
-    // Hiển thị dòng "chưa có file" nếu nhóm trống
-    const phapLyEmpty = !filesPhapLy ? `<span class="plant-files-empty">Chưa có file</span>` : "";
-    const vanHanhEmpty = !filesVanHanh ? `<span class="plant-files-empty">Chưa có file</span>` : "";
+    // Nhóm 1: Hồ sơ pháp lý — LUÔN hiển thị đủ 2 nút
+    const filesPhapLy = LOAI_HOSO.filter(l=>l.key==="fileGPMT"||l.key==="fileDKMT").map(l=>renderFileGroup(p,l)).join("");
+    // Nhóm 2: Hồ sơ vận hành — LUÔN hiển thị đủ 4 nút
+    const filesVanHanh = LOAI_HOSO.filter(l=>l.key!=="fileGPMT"&&l.key!=="fileDKMT").map(l=>renderFileGroup(p,l)).join("");
     return `<div class="plant-card st-${st}" data-pstatus="${st}">
       <div class="plant-head">
         <span class="plant-name">${p.ten}</span>
@@ -952,26 +882,27 @@ function renderCongTy(){
       <div class="plant-meta">📍 ${p.diaDiem} &nbsp;·&nbsp; Công suất: <strong>${p.congSuat}</strong> &nbsp;·&nbsp; Phụ trách: ${p.nguoiPhuTrach}</div>
       <div class="plant-note">${p.ghiChu}</div>
       <div class="plant-files">
-        <div class="plant-files-row"><span class="plant-files-label">Hồ sơ pháp lý:</span>${filesPhapLy || phapLyEmpty}</div>
-        <div class="plant-files-row"><span class="plant-files-label">Hồ sơ vận hành:</span>${filesVanHanh || vanHanhEmpty}</div>
+        <div class="plant-files-row"><span class="plant-files-label">Hồ sơ pháp lý:</span>${filesPhapLy}</div>
+        <div class="plant-files-row"><span class="plant-files-label">Hồ sơ vận hành:</span>${filesVanHanh}</div>
       </div>
     </div>`;
   }).join("");
   return `<section class="section" id="sec-congty">
     <p class="section-eyebrow">Cơ sở dữ liệu nội bộ — MT-1P</p>
     <h2 class="section-title">Danh sách &amp; Thủ tục Môi trường của Công ty</h2>
-    <p class="section-desc">Trạng thái và hồ sơ môi trường của ${total} nhà máy. Mỗi nhà máy có 2 nhóm hồ sơ: <strong>Pháp lý</strong> (GPMT, ĐKMT) và <strong>Vận hành</strong> (Báo cáo BVMT, GPKT, KQ Quan trắc, Tài liệu khác).</p>
-    <div id="dataSourceBadge" class="data-source-badge live">🟢 Dữ liệu trực tuyến — v3.4 (28 nhà máy × 6 loại hồ sơ)</div>
+    <p class="section-desc">Trạng thái và hồ sơ môi trường của ${total} nhà máy. <strong>Mỗi nhà máy hiển thị đủ 6 loại hồ sơ</strong> (2 pháp lý + 4 vận hành). Nút <em>mờ</em> = chưa có file.</p>
+    <div id="dataSourceBadge" class="data-source-badge live">🟢 Dữ liệu trực tuyến — v3.5 (28 nhà máy × 6 loại hồ sơ)</div>
     ${dashboard}
     <div class="status-legend">
       <span><span class="status-dot status-green"></span>Đã có GPMT hoặc ĐKMT</span>
       <span><span class="status-dot status-yellow"></span>Đang hoàn thiện</span>
       <span><span class="status-dot status-red"></span>Chưa có văn bản</span>
+      <span>🔘 Nút mờ = chưa có file (đang chờ bổ sung)</span>
     </div>
     <div class="status-filter form-filter" id="plantFilter">${filterChips}</div>
     <div id="plantCards">${cards}</div>
     <div class="update" style="margin-top:18px;">
-      <strong>Hướng dẫn cập nhật:</strong> Khi có file mới, upload vào đúng thư mục (<code>files/baocao/</code>, <code>files/gpkt/</code>, <code>files/quantrac/</code>, <code>files/khac/</code>), sau đó sửa trường tương ứng trong mảng <code>FALLBACK_CONGTY</code>. Để nguyên <code>""</code> nếu chưa có file — nút sẽ tự ẩn.
+      <strong>Hướng dẫn cập nhật file:</strong> Upload PDF vào thư mục tương ứng (<code>files/gpmt/</code>, <code>files/dkmt/</code>, <code>files/baocao/</code>, <code>files/gpkt/</code>, <code>files/quantrac/</code>, <code>files/khac/</code>), sau đó sửa trường tương ứng trong mảng <code>FALLBACK_CONGTY</code>. Để nguyên <code>""</code> nếu chưa có file — nút sẽ chuyển thành nút mờ.
     </div>
   </section>`;
 }
@@ -1189,7 +1120,7 @@ document.getElementById("railToggle").addEventListener("click",toggleRail);
 railBackdrop.addEventListener("click",closeRail);
 if(window.innerWidth>880)openRail();
 
-const THEME_KEY="tracuu_mt_theme_v34";
+const THEME_KEY="tracuu_mt_theme_v35";
 const iconMoon=document.getElementById("iconMoon");
 const iconSun=document.getElementById("iconSun");
 function applyTheme(t){document.documentElement.setAttribute("data-theme",t);iconMoon.style.display=t==="dark"?"none":"";iconSun.style.display=t==="dark"?"":'none';}
