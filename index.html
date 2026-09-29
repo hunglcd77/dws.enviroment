@@ -133,14 +133,8 @@ html[data-theme="dark"] .tbl tr:nth-child(even) td{background:#1B2119;}
 .cal-when{flex:0 0 150px;font-family:var(--sans);font-weight:700;font-size:12.5px;color:var(--forest-deep);background:var(--paper-deep);padding:5px 10px;border-radius:4px;text-align:center;}
 .cal-what{flex:1;font-size:14.5px;padding-top:3px;}
 .cal-what small{display:block;font-family:var(--sans);font-size:12px;color:var(--ink-soft);margin-top:2px;}
-.form-toolbar{display:flex;gap:8px;margin-bottom:14px;font-family:var(--sans);flex-wrap:wrap;}
-.tbtn{font-family:var(--sans);font-size:12px;font-weight:600;color:var(--forest-deep);background:var(--paper-deep);border:1px solid var(--line);border-radius:6px;padding:6px 12px;cursor:pointer;}
-.tbtn:hover{background:var(--paper);}
-.link-cell{display:flex;align-items:center;gap:8px;white-space:nowrap;flex-wrap:wrap;}
 .link-btn{display:inline-flex;align-items:center;gap:5px;font-family:var(--sans);font-size:12px;font-weight:700;color:var(--forest-deep);background:var(--paper-deep);border:1px solid var(--line);border-radius:5px;padding:4px 9px;text-decoration:none;cursor:pointer;}
 .link-btn:hover{background:var(--forest);color:#fff;border-color:var(--forest);}
-.link-btn.custom{background:var(--slate-bg);color:var(--slate);border-color:var(--slate);}
-.link-btn.custom:hover{background:var(--slate);color:#fff;}
 .link-btn.gpmt-file{background:#E6F5EC;color:#1E7A45;border-color:#2E9E5B;}
 .link-btn.gpmt-file:hover{background:#2E9E5B;color:#fff;}
 .link-btn.dkmt-file{background:var(--slate-bg);color:var(--slate);border-color:var(--slate);}
@@ -157,20 +151,9 @@ html[data-theme="dark"] .link-btn.baocao-file{background:var(--purple-bg);color:
 html[data-theme="dark"] .link-btn.gpkt-file{background:var(--teal-bg);color:var(--teal);}
 html[data-theme="dark"] .link-btn.quantrac-file{background:#3A2E18;color:#E0A94E;}
 html[data-theme="dark"] .link-btn.khac-file{background:#2A2A2A;color:#BBB;}
-
-/* === Nút "chưa có file" — hiển thị mờ, không click được === */
-.link-btn-empty{
-  display:inline-flex;align-items:center;gap:5px;
-  font-family:var(--sans);font-size:12px;font-weight:700;
-  color:#B8BEB4;background:transparent;
-  border:1px dashed #D7DBD1;border-radius:5px;padding:4px 9px;
-  cursor:not-allowed;opacity:.7;
-}
+.link-btn-empty{display:inline-flex;align-items:center;gap:5px;font-family:var(--sans);font-size:12px;font-weight:700;color:#B8BEB4;background:transparent;border:1px dashed #D7DBD1;border-radius:5px;padding:4px 9px;cursor:not-allowed;opacity:.7;}
 html[data-theme="dark"] .link-btn-empty{color:#5A635A;border-color:#3A423A;}
-
-/* === Dropdown nhiều file === */
 .file-group{position:relative;display:inline-block;}
-.file-group-btn{position:relative;}
 .file-group-btn::after{content:" ▾";font-size:9px;}
 .file-dropdown{display:none;position:absolute;top:calc(100% + 4px);left:0;min-width:220px;background:var(--paper-deep);border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(27,36,32,.18);z-index:50;overflow:hidden;}
 .file-dropdown.show{display:block;}
@@ -178,14 +161,10 @@ html[data-theme="dark"] .link-btn-empty{color:#5A635A;border-color:#3A423A;}
 .file-dropdown-item:last-child{border-bottom:none;}
 .file-dropdown-item:hover{background:var(--paper);}
 .file-dropdown-item small{color:var(--ink-soft);font-size:10.5px;font-weight:600;}
-
-/* === Khối tài liệu nhà máy === */
 .plant-files{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);}
 .plant-files-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:6px;}
 .plant-files-row:last-child{margin-bottom:0;}
 .plant-files-label{font-size:10.5px;font-weight:700;color:#8A9389;text-transform:uppercase;letter-spacing:.05em;min-width:110px;}
-
-/* Wizard */
 .wizard-grid{display:grid;grid-template-columns:1fr 380px;gap:20px;align-items:start;}
 @media (max-width:980px){.wizard-grid{grid-template-columns:1fr;}}
 .wz-step{background:var(--paper-deep);border:1px solid var(--line-soft);border-radius:10px;padding:18px 20px;margin-bottom:16px;font-family:var(--sans);box-shadow:var(--shadow-sm);}
@@ -237,10 +216,9 @@ html[data-theme="dark"] .link-btn-empty{color:#5A635A;border-color:#3A423A;}
 .result-tab.accent{background:#1F5D3A22;color:#8FD9A8;}
 .result-disclaimer{font-size:11px;color:#8A9389;padding:10px 18px;background:var(--paper);border-top:1px solid var(--line);}
 .status-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:middle;}
-.status-green{background:#2E9E5B;} .status-yellow{background:#E0A215;} .status-red{background:#C0392B;} .status-blue{background:#5B8DBE;}
+.status-green{background:#2E9E5B;} .status-yellow{background:#E0A215;} .status-red{background:#C0392B;}
 .stat-dash{display:flex;gap:14px;flex-wrap:wrap;margin:18px 0 22px;align-items:stretch;}
 .stat-ring-card{position:relative;width:104px;height:104px;flex:0 0 auto;background:var(--paper-deep);border:1px solid var(--line-soft);border-radius:14px;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-sm);}
-.stat-ring{width:76px;height:76px;}
 .stat-ring-num{position:absolute;font-family:var(--sans);font-weight:800;font-size:17px;color:var(--forest-deep);}
 .stat-card{flex:1;min-width:130px;background:var(--paper-deep);border:1px solid var(--line-soft);border-radius:14px;padding:14px 16px;box-shadow:var(--shadow-sm);border-top:3px solid var(--line);}
 .stat-card.st-green{border-top-color:#2E9E5B;}
@@ -254,6 +232,7 @@ html[data-theme="dark"] .link-btn-empty{color:#5A635A;border-color:#3A423A;}
 .status-legend{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);margin-bottom:14px;}
 .data-source-badge{display:inline-block;font-family:var(--sans);font-size:11.5px;font-weight:600;padding:5px 12px;border-radius:6px;margin:8px 0 4px;}
 .data-source-badge.live{background:#E6F5EC;color:#1E7A45;}
+.data-source-badge.fallback{background:#FCF1D8;color:#95700E;}
 .status-filter{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;}
 .plant-card{background:var(--paper-deep);border:1px solid var(--line-soft);border-left:4px solid #B9C0B4;border-radius:8px;padding:13px 16px;margin-bottom:10px;font-family:var(--sans);box-shadow:var(--shadow-sm);}
 .plant-card.st-green{border-left-color:#2E9E5B;}
@@ -270,6 +249,11 @@ html[data-theme="dark"] .link-btn-empty{color:#5A635A;border-color:#3A423A;}
 .foot{font-family:var(--sans);font-size:12px;color:var(--ink-soft);border-top:1px solid var(--line);padding:22px 34px;max-width:1080px;}
 .hl-flash{animation:flash 1.6s ease;}
 @keyframes flash{0%{background:#FCE9B8;}100%{background:transparent;}}
+.loading-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 20px;text-align:center;font-family:var(--sans);color:var(--ink-soft);}
+.loading-spinner{width:50px;height:50px;border:4px solid var(--line);border-top-color:var(--forest);border-radius:50%;animation:spin 1s linear infinite;margin-bottom:20px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.error-box{background:var(--warn-bg);border-left:4px solid var(--warn-line);padding:16px 20px;border-radius:6px;font-family:var(--sans);margin:20px 0;max-width:600px;}
+.error-box strong{color:var(--red);}
 @media (max-width:880px){
   body{overflow-x:hidden;}
   .rail{width:86vw;max-width:300px;}
@@ -294,7 +278,7 @@ html[data-theme="dark"] .link-btn-empty{color:#5A635A;border-color:#3A423A;}
       <div class="rail-logo">MT</div>
       <div><p class="rail-brand">Tra cứu Thủ tục<br>Môi trường</p></div>
     </div>
-    <p class="rail-sub">Công ty CP Cấp nước &amp; Môi trường Đô thị Đồng Tháp — v3.5, 09/2026</p>
+    <p class="rail-sub">Công ty CP Cấp nước &amp; Môi trường Đô thị Đồng Tháp — v4.0, 09/2026</p>
 
     <div class="rail-group">
       <p class="rail-label">Công ty</p>
@@ -340,7 +324,7 @@ html[data-theme="dark"] .link-btn-empty{color:#5A635A;border-color:#3A423A;}
         </button>
         <div class="search-wrap">
           <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input id="searchInput" class="search-input" type="text" placeholder="Tìm thủ tục, nhà máy, tỉnh thành, mẫu số…" autocomplete="off">
+          <input id="searchInput" class="search-input" type="text" placeholder="Tìm thủ tục, nhà máy, tỉnh thành…" autocomplete="off">
           <div id="searchResults" class="search-results"></div>
         </div>
         <button class="rail-toggle" id="themeToggle" aria-label="Đổi chế độ" style="margin-left:10px;">
@@ -348,111 +332,41 @@ html[data-theme="dark"] .link-btn-empty{color:#5A635A;border-color:#3A423A;}
           <svg id="iconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2M12 19.5v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2.5 12h2M19.5 12h2"/></svg>
         </button>
       </div>
-      <p class="search-hint">Gõ để tìm — hỗ trợ tìm theo tên nhà máy, loại hồ sơ, số văn bản.</p>
+      <p class="search-hint">Gõ để tìm trong toàn bộ nội dung sổ tay.</p>
     </div>
 
-    <div class="content" id="content"></div>
+    <div class="content" id="content">
+      <div class="loading-screen">
+        <div class="loading-spinner"></div>
+        <p>Đang tải dữ liệu từ <code>data.json</code>…</p>
+      </div>
+    </div>
 
     <div class="foot">
-      Công cụ tra cứu — Sổ tay Hướng dẫn Thủ tục Môi trường v3.5 (09/2026). Mỗi nhà máy hiển thị đủ 6 loại hồ sơ; nút mờ = chưa có file.
+      Công cụ tra cứu — v4.0 (09/2026) · Dữ liệu tách riêng trong <code>data.json</code> · Chỉ cần cập nhật file JSON khi có hồ sơ mới.
     </div>
   </div>
 </div>
 
 <script>
 /* =========================================================================
-   DATA — 28 nhà máy, MỖI nhà máy có ĐỦ 6 trường file.
-   Trạng thái: ""  = chưa có file (nút mờ)
-               "url" = 1 file
-               [{url,nhan},...] = nhiều file (dropdown)
+   HỆ THỐNG v4.0 — Dữ liệu tách khỏi code
+   - Cấu hình tĩnh (danh mục thủ tục, tỉnh thành, biểu mẫu…) nằm trong JS
+   - Dữ liệu động (28 nhà máy + hồ sơ) nằm trong data.json
+   - Khi có file mới: chỉ sửa data.json, KHÔNG cần đụng index.html
    ========================================================================= */
-const FALLBACK_CONGTY = [
-  {"id":"nm01","ten":"Nhà máy nước mặt Đông Bình","diaDiem":"Khu phố Đông Bình, phường Cao Lãnh, tỉnh Đồng Tháp","congSuat":"40.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"ĐKMT đã được UBND phường Cao Lãnh tiếp nhận (CV 90/UBND-KTHTĐT ngày 13/01/2025).",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm01-dong-binh.pdf",
-    "fileBaoCao":[{"url":"files/baocao/nm01-baocao-2024.pdf","nhan":"Báo cáo 2024"},{"url":"files/baocao/nm01-baocao-2025.pdf","nhan":"Báo cáo 2025"}],
-    "fileGPKT":[{"url":"files/gpkt/nm01-gpkt.pdf","nhan":"GPKT nước mặt"}],
-    "fileQuanTrac":[{"url":"files/quantrac/nm01-qt-2025-Q4.pdf","nhan":"QT Q4/2025"}],
-    "fileKhac":"",
-    "status":{"gpmt":"green"}},
-  {"id":"nm02","ten":"Nhà máy nước mặt Tân Long","diaDiem":"Khu phố Bến Bắc, phường Cao Lãnh","congSuat":"6.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"ĐKMT đã được UBND phường Cao Lãnh tiếp nhận (CV 1927/UBND-KTHTĐT ngày 07/11/2025).",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm02-tan-long.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
-  {"id":"nm03","ten":"Nhà máy nước mặt Mỹ Hiệp","diaDiem":"Cụm CN Mỹ Hiệp, xã Mỹ Hiệp","congSuat":"5.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Mỹ Hiệp tiếp nhận ĐKMT (CV 04/UBND-HC ngày 19/6/2025).",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm03-my-hiep.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
-  {"id":"nm04","ten":"Nhà máy nước mặt Mỹ An","diaDiem":"Ấp Mỹ An 2, xã Tháp Mười","congSuat":"13.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Tháp Mười tiếp nhận ĐKMT (CV 974/UBND-KT ngày 11/4/2026).",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm04-my-an.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
-  {"id":"nm05","ten":"Trạm cấp nước Mỹ Thọ","diaDiem":"Ấp Mỹ Tây, xã Mỹ Thọ","congSuat":"10.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Phòng KT xã Mỹ Thọ xác nhận thuộc đối tượng MIỄN ĐKMT.",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm05-my-tho.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
-  {"id":"nm06","ten":"Trạm cấp nước Trường Xuân","diaDiem":"Xã Trường Xuân","congSuat":"2.500 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Trường Xuân tiếp nhận ĐKMT (CV 386/UBND ngày 28/5/2025).",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm06-truong-xuan.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
-  {"id":"nm07","ten":"Nhà máy nước mặt Trần Quốc Toản","diaDiem":"QL30, phường Mỹ Ngãi","congSuat":"7.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Chưa có văn bản/GPMT — cần thực hiện thủ tục môi trường.",
-    "fileGPMT":"","fileDKMT":"","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"red"}},
-  {"id":"nm08","ten":"Trạm cấp nước Tân Nghĩa","diaDiem":"Chợ Tân Nghĩa, phường Mỹ Ngãi","congSuat":"2.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Chưa có văn bản/GPMT — cần thực hiện thủ tục môi trường.",
-    "fileGPMT":"","fileDKMT":"","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"red"}},
-  {"id":"nm09","ten":"Nhà máy nước Sa Đéc","diaDiem":"207B Trần Hưng Đạo, P. Sa Đéc","congSuat":"17.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND phường Sa Đéc tiếp nhận ĐKMT (TB 105/TB-UBND ngày 18/5/2026).",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm09-sa-dec.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
-  {"id":"nm10","ten":"Nhà máy nước KCN C","diaDiem":"KCN C, phường Tân Quy Đông","congSuat":"15.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND phường Tân Quy Đông tiếp nhận ĐKMT (TB 30/TB-UBND ngày 24/4/2025).",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm10-kcn-c.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
-  {"id":"nm11","ten":"Nhà máy nước mặt Nha Mân","diaDiem":"QL80, xã Tân Nhuận Đông","congSuat":"7.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Tân Nhuận Đông xác nhận ĐKMT (CV 273/UBND-KT ngày 30/5/2025).",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm11-nha-man.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
-  {"id":"nm12","ten":"Nhà máy nước mặt Nha Mân 2","diaDiem":"QL80, xã Tân Nhuận Đông","congSuat":"5.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Tân Nhuận Đông xác nhận ĐKMT (CV 272/UBND-KT ngày 30/5/2025).",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm12-nha-man-2.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
-  {"id":"nm13","ten":"Nhà máy nước mặt An Hiệp","diaDiem":"Ấp Tân Thạnh 2, xã Phú Hựu","congSuat":"2.500 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Phú Hựu tiếp nhận ĐKMT.",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm13-an-hiep.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
-  {"id":"nm14","ten":"Nhà máy nước mặt An Phú Thuận","diaDiem":"Xã Phú Hựu","congSuat":"2.500 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Chưa có văn bản/GPMT — cần thực hiện thủ tục môi trường.",
-    "fileGPMT":"","fileDKMT":"","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"red"}},
-  {"id":"nm15","ten":"Nhà máy nước mặt Bình Thành","diaDiem":"Xã Bình Thành, huyện Lấp Vò","congSuat":"4.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Đã có GPMT số 01/GPMT-UBND ngày 21/4/2025 của UBND huyện Lấp Vò.",
-    "fileGPMT":"files/gpmt/nm15-binh-thanh.pdf","fileDKMT":"",
-    "fileBaoCao":[{"url":"files/baocao/nm15-baocao-2025.pdf","nhan":"Báo cáo 2025"}],
-    "fileGPKT":[{"url":"files/gpkt/nm15-gpkt.pdf","nhan":"GPKT sông Xáng"}],
-    "fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
-  {"id":"nm16","ten":"Nhà máy nước mặt Lộ Tiểu","diaDiem":"QL80, xã Phú Hựu","congSuat":"5.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Đã có ĐKMT được UBND xã tiếp nhận.",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm16-lo-tieu.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
-  {"id":"nm17","ten":"Nhà máy nước mặt Mương Điều","diaDiem":"Chợ Mương Điều, xã Tân Khánh Trung","congSuat":"3.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Chưa có văn bản/GPMT — cần thực hiện thủ tục môi trường.",
-    "fileGPMT":"","fileDKMT":"","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"red"}},
-  {"id":"nm18","ten":"Nhà máy nước mặt Khánh Mỹ","diaDiem":"Xã Tân Khánh Trung","congSuat":"2.500 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Chưa có văn bản/GPMT — cần thực hiện thủ tục môi trường.",
-    "fileGPMT":"","fileDKMT":"","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"red"}},
-  {"id":"nm19","ten":"Nhà máy nước mặt Vĩnh Thạnh","diaDiem":"Ấp Hòa Thuận, xã Lấp Vò","congSuat":"500 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Lấp Vò tiếp nhận ĐKMT (TB 38/TB-UBND ngày 11/3/2026).",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm19-vinh-thanh.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
-  {"id":"nm20","ten":"Nhà máy nước mặt Phú Hựu","diaDiem":"Xã Phú Hựu, huyện Châu Thành","congSuat":"5.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Đã có GPMT số 27/GPMT-UBND ngày 26/6/2025 của UBND huyện Châu Thành.",
-    "fileGPMT":"files/gpmt/nm20-phu-huu.pdf","fileDKMT":"",
-    "fileBaoCao":[{"url":"files/baocao/nm20-baocao-2025.pdf","nhan":"Báo cáo 2025"}],
-    "fileGPKT":"",
-    "fileQuanTrac":[{"url":"files/quantrac/nm20-qt-2025-Q3.pdf","nhan":"QT Q3/2025"},{"url":"files/quantrac/nm20-qt-2025-Q4.pdf","nhan":"QT Q4/2025"}],
-    "fileKhac":"","status":{"gpmt":"green"}},
-  {"id":"nm21","ten":"Nhà máy nước mặt Tân Phú Trung","diaDiem":"Xã Tân Phú Trung","congSuat":"5.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Đã có ĐKMT được UBND xã tiếp nhận.",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm21-tan-phu-trung.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
-  {"id":"nm22","ten":"Nhà máy nước mặt Tân Dương","diaDiem":"KDC Tân Dương, xã Tân Dương","congSuat":"3.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Chưa có văn bản/GPMT — cần thực hiện thủ tục môi trường.",
-    "fileGPMT":"","fileDKMT":"","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"red"}},
-  {"id":"nm23","ten":"Nhà máy nước mặt Hồng Ngự","diaDiem":"Đường Hùng Vương, Kp An Thạnh, P. An Bình","congSuat":"17.500 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Đã có GPMT 1732/GPMT-UBND ngày 05/6/2025. Sau đó ĐKMT theo NQ 66.19/2026.",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm23-hong-ngu.pdf",
-    "fileBaoCao":[{"url":"files/baocao/nm23-baocao-2025.pdf","nhan":"Báo cáo 2025"}],
-    "fileGPKT":[{"url":"files/gpkt/nm23-gpkt.pdf","nhan":"GPKT 615/GP-UBND"}],
-    "fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
-  {"id":"nm24","ten":"Trạm cấp nước Thường Phước","diaDiem":"Đường Trường Chinh, ấp Thường Thới, xã Thường Phước","congSuat":"6.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Thường Phước tiếp nhận ĐKMT ngày 24/9/2026.",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm24-thuong-phuoc.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
-  {"id":"nm25","ten":"Nhà máy nước mặt An Long","diaDiem":"Ấp Phú Lợi, xã An Long","congSuat":"6.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã An Long tiếp nhận ĐKMT (CV 947/UBND-KT ngày 10/6/2026).",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm25-an-long.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
-  {"id":"nm26","ten":"Nhà máy nước mặt Bình Phú","diaDiem":"Ấp Gò Da, xã Bình Phú, huyện Tân Hồng","congSuat":"6.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"Đã có GPMT số 83/GPMT-UBND ngày 29/5/2025 của UBND huyện Tân Hồng.",
-    "fileGPMT":"files/gpmt/nm26-binh-phu.pdf","fileDKMT":"",
-    "fileBaoCao":"","fileGPKT":"",
-    "fileQuanTrac":[{"url":"files/quantrac/nm26-qt-2025-Q4.pdf","nhan":"QT Q4/2025"}],
-    "fileKhac":"","status":{"gpmt":"green"}},
-  {"id":"nm27","ten":"Nhà máy nước mặt Tràm Chim","diaDiem":"Ấp 2, xã Tràm Chim","congSuat":"6.000 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Tràm Chim tiếp nhận ĐKMT (CV 1663/UBND-KT ngày 07/8/2026).",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm27-tram-chim.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}},
-  {"id":"nm28","ten":"Nhà máy nước mặt Thanh Bình","diaDiem":"Xã Thanh Bình","congSuat":"8.500 m³/ngày","nguon":"Nước mặt","nguoiPhuTrach":"Đặng Thanh Hùng","ghiChu":"UBND xã Thanh Bình tiếp nhận ĐKMT ngày 12/11/2025.",
-    "fileGPMT":"","fileDKMT":"files/dkmt/nm28-thanh-binh.pdf","fileBaoCao":"","fileGPKT":"","fileQuanTrac":"","fileKhac":"","status":{"gpmt":"green"}}
-];
 
 const LOAI_HOSO = [
-  {key:"fileGPMT",     nhan:"GPMT",           icon:"📄", css:"gpmt-file",     moTa:"Giấy phép môi trường",         mauSac:"#2E9E5B"},
-  {key:"fileDKMT",     nhan:"ĐKMT",           icon:"📋", css:"dkmt-file",     moTa:"Đăng ký môi trường",           mauSac:"#2B4A63"},
-  {key:"fileBaoCao",   nhan:"Báo cáo BVMT",   icon:"📊", css:"baocao-file",   moTa:"Báo cáo công tác BVMT định kỳ", mauSac:"#5B3E7F"},
-  {key:"fileGPKT",     nhan:"GPKT",           icon:"💧", css:"gpkt-file",     moTa:"Giấy phép khai thác nước",      mauSac:"#1F6B6B"},
-  {key:"fileQuanTrac", nhan:"KQ Quan trắc",   icon:"🧪", css:"quantrac-file", moTa:"Kết quả quan trắc môi trường",  mauSac:"#D4A017"},
-  {key:"fileKhac",     nhan:"Tài liệu khác",  icon:"📁", css:"khac-file",     moTa:"PCCC, XLNT, sự cố môi trường…", mauSac:"#555555"}
+  {key:"fileGPMT",     nhan:"GPMT",           icon:"📄", css:"gpmt-file",     moTa:"Giấy phép môi trường"},
+  {key:"fileDKMT",     nhan:"ĐKMT",           icon:"📋", css:"dkmt-file",     moTa:"Đăng ký môi trường"},
+  {key:"fileBaoCao",   nhan:"Báo cáo BVMT",   icon:"📊", css:"baocao-file",   moTa:"Báo cáo công tác BVMT định kỳ"},
+  {key:"fileGPKT",     nhan:"GPKT",           icon:"💧", css:"gpkt-file",     moTa:"Giấy phép khai thác nước"},
+  {key:"fileQuanTrac", nhan:"KQ Quan trắc",   icon:"🧪", css:"quantrac-file", moTa:"Kết quả quan trắc môi trường"},
+  {key:"fileKhac",     nhan:"Tài liệu khác",  icon:"📁", css:"khac-file",     moTa:"PCCC, XLNT, sự cố môi trường…"}
 ];
 
-const DATA = {
+/* Cấu hình tĩnh — không cần sửa thường xuyên */
+const DATA_TINH = {
   canCu:[
     ["1","Luật Bảo vệ môi trường 72/2020/QH14","01/01/2022","Khung pháp lý tổng thể về BVMT."],
     ["2","Luật 146/2025/QH15 sửa 15 luật","01/01/2026","Sửa thẩm quyền ĐTM/GPMT, mô hình 2 cấp."],
@@ -660,9 +574,11 @@ const DATA = {
     {id:"quymodat",ten:"Quy mô sử dụng đất ≥50ha, biển ≥10ha"},
     {id:"nguonnuocsh",ten:"Xả NT vào vùng bảo hộ nguồn nước sinh hoạt"},
     {id:"taidinhcu",ten:"Có yêu cầu di dân, tái định cư"}
-  ],
-  congTyNhaMay: FALLBACK_CONGTY
+  ]
 };
+
+/* Biến DATA — được nạp từ data.json khi trang tải */
+let DATA = Object.assign({}, DATA_TINH, {congTyNhaMay: []});
 
 /* ===== HELPERS ===== */
 const DK_LABEL={req:"BẮT BUỘC",cond:"CÓ ĐIỀU KIỆN",na:"KHÔNG ÁP DỤNG",rep:"THAY THẾ GPMT"};
@@ -677,20 +593,16 @@ function chuanHoaFile(val){
   return [];
 }
 
-/* Render 1 nút file. Nếu chưa có file → nút mờ "Chưa có". */
 function renderFileGroup(plant, loai){
   const files = chuanHoaFile(plant[loai.key]);
-  // === CHƯA CÓ FILE → hiển thị nút mờ ===
   if(files.length === 0){
     return `<span class="link-btn-empty" title="Chưa có file ${loai.moTa}">${loai.icon} ${loai.nhan}: chưa có</span>`;
   }
-  // === CÓ 1 FILE ===
   if(files.length === 1){
     const f = files[0];
     const nhan = f.nhan ? `${loai.icon} ${loai.nhan} — ${f.nhan}` : `${loai.icon} Xem ${loai.nhan}`;
     return `<a class="link-btn ${loai.css}" href="${f.url}" target="_blank" rel="noopener" title="${loai.moTa}">${nhan}</a>`;
   }
-  // === CÓ NHIỀU FILE → dropdown ===
   const items = files.map(f=>`<a class="file-dropdown-item" href="${f.url}" target="_blank" rel="noopener"><span>${f.nhan||f.url.split('/').pop()}</span><small>↗</small></a>`).join("");
   return `<div class="file-group">
     <button class="link-btn ${loai.css} file-group-btn" data-dropdown="dd-${plant.id}-${loai.key}">${loai.icon} ${loai.nhan} (${files.length})</button>
@@ -725,6 +637,7 @@ function classify(st){
   return{nganh,tinh,finalNhom,canDanhGiaSoBo:canDTM&&(nganh.dtmLuon||quyMoLon),canDTM,canGPMT,canDKMT,dkmtCapTinh,dkmtCapXa,coQuanDTM,coQuanGPMT,coQuanDKMT,thoiHanDTM,thoiHanGPMT:"07–10 năm",nguongNuocThaiGPMT:nguongNT,nguongKhiThaiGPMT:N.gpmt_khiThai,chiTietNguon:{nt:{nhan:st.nuocThai>0?st.nuocThai+" m³/ngày":"Không phát sinh"},kt:{nhan:st.khiThai>0?st.khiThai+" m³/giờ":"Không phát sinh"}}};
 }
 
+/* ===== RENDER các section ===== */
 function renderFormWizard(){
   const nganhOpts=DATA.nganhNghe.map(n=>`<option value="${n.ma}">${n.ten}</option>`).join("");
   const twList=DATA.tinhThanh.filter(t=>t.loai==="TW");
@@ -736,13 +649,13 @@ function renderFormWizard(){
   return `<section class="section" id="sec-form">
     <p class="section-eyebrow">Công cụ tra cứu tương tác</p>
     <h2 class="section-title">Tra cứu theo Form</h2>
-    <p class="section-desc">Điền 3 bước, kết quả cập nhật tự động. Danh sách 34 tỉnh/thành theo NQ 202/2025/QH15.</p>
+    <p class="section-desc">Điền 3 bước, kết quả cập nhật tự động. 34 tỉnh/thành theo NQ 202/2025/QH15.</p>
     <div class="wizard-grid">
       <div>
         <div class="wz-step"><div class="wz-step-head"><div class="wz-step-num">1</div><p class="wz-step-title">Quy mô và ngành nghề</p></div>
           <div class="wz-toggle" id="ffLoaiHinh"><button data-v="duan" class="active">Dự án mới</button><button data-v="coso">Cơ sở đang hoạt động</button></div>
           <div class="wz-row">
-            <div class="wz-field"><label>Tỉnh / thành phố (34 đơn vị)</label><select id="ffTinh">${tinhOptsFull}</select></div>
+            <div class="wz-field"><label>Tỉnh / thành phố</label><select id="ffTinh">${tinhOptsFull}</select></div>
             <div class="wz-field"><label>Ngành nghề</label><select id="ffNganh">${nganhOpts}</select></div>
           </div>
           <div class="wz-row">
@@ -843,13 +756,12 @@ function initFormWizard(){
   updateFormResult();
 }
 
-/* ===== Tab Công ty — TẤT CẢ 28 nhà máy hiển thị đủ 6 nút ===== */
 function renderCongTy(){
   const STATUS_TEXT={green:"Đã hoàn thành",yellow:"Đang hoàn thiện",red:"Chưa có văn bản"};
   const counts={green:0,yellow:0,red:0};
   DATA.congTyNhaMay.forEach(p=>{if(counts[p.status.gpmt]!==undefined)counts[p.status.gpmt]++;});
   const total=DATA.congTyNhaMay.length;
-  const pctGreen=Math.round((counts.green/total)*100);
+  const pctGreen=total>0?Math.round((counts.green/total)*100):0;
   let countByLoai = {};
   LOAI_HOSO.forEach(l=>countByLoai[l.key]=0);
   DATA.congTyNhaMay.forEach(p=>{
@@ -870,9 +782,7 @@ function renderCongTy(){
     <button class="form-chip" data-pf="red">🔴 Chưa có (${counts.red})</button>`;
   const cards=DATA.congTyNhaMay.map(p=>{
     const st=p.status.gpmt;
-    // Nhóm 1: Hồ sơ pháp lý — LUÔN hiển thị đủ 2 nút
     const filesPhapLy = LOAI_HOSO.filter(l=>l.key==="fileGPMT"||l.key==="fileDKMT").map(l=>renderFileGroup(p,l)).join("");
-    // Nhóm 2: Hồ sơ vận hành — LUÔN hiển thị đủ 4 nút
     const filesVanHanh = LOAI_HOSO.filter(l=>l.key!=="fileGPMT"&&l.key!=="fileDKMT").map(l=>renderFileGroup(p,l)).join("");
     return `<div class="plant-card st-${st}" data-pstatus="${st}">
       <div class="plant-head">
@@ -890,20 +800,16 @@ function renderCongTy(){
   return `<section class="section" id="sec-congty">
     <p class="section-eyebrow">Cơ sở dữ liệu nội bộ — MT-1P</p>
     <h2 class="section-title">Danh sách &amp; Thủ tục Môi trường của Công ty</h2>
-    <p class="section-desc">Trạng thái và hồ sơ môi trường của ${total} nhà máy. <strong>Mỗi nhà máy hiển thị đủ 6 loại hồ sơ</strong> (2 pháp lý + 4 vận hành). Nút <em>mờ</em> = chưa có file.</p>
-    <div id="dataSourceBadge" class="data-source-badge live">🟢 Dữ liệu trực tuyến — v3.5 (28 nhà máy × 6 loại hồ sơ)</div>
+    <p class="section-desc">Trạng thái và hồ sơ môi trường của ${total} nhà máy. Mỗi nhà máy hiển thị đủ 6 loại hồ sơ. Nút <em>mờ</em> = chưa có file.</p>
+    <div id="dataSourceBadge" class="data-source-badge live">🟢 Dữ liệu tải từ <code>data.json</code> — v4.0</div>
     ${dashboard}
     <div class="status-legend">
       <span><span class="status-dot status-green"></span>Đã có GPMT hoặc ĐKMT</span>
       <span><span class="status-dot status-yellow"></span>Đang hoàn thiện</span>
       <span><span class="status-dot status-red"></span>Chưa có văn bản</span>
-      <span>🔘 Nút mờ = chưa có file (đang chờ bổ sung)</span>
     </div>
     <div class="status-filter form-filter" id="plantFilter">${filterChips}</div>
     <div id="plantCards">${cards}</div>
-    <div class="update" style="margin-top:18px;">
-      <strong>Hướng dẫn cập nhật file:</strong> Upload PDF vào thư mục tương ứng (<code>files/gpmt/</code>, <code>files/dkmt/</code>, <code>files/baocao/</code>, <code>files/gpkt/</code>, <code>files/quantrac/</code>, <code>files/khac/</code>), sau đó sửa trường tương ứng trong mảng <code>FALLBACK_CONGTY</code>. Để nguyên <code>""</code> nếu chưa có file — nút sẽ chuyển thành nút mờ.
-    </div>
   </section>`;
 }
 
@@ -928,11 +834,8 @@ function renderHoSoVanHanh(){
   return `<section class="section" id="sec-hoso">
     <p class="section-eyebrow">Vận hành &amp; hồ sơ</p>
     <h2 class="section-title">Hồ sơ vận hành môi trường</h2>
-    <p class="section-desc">4 loại hồ sơ phải duy trì trong suốt vòng đời của nhà máy, ngoài hồ sơ pháp lý ban đầu (GPMT/ĐKMT).</p>
+    <p class="section-desc">4 loại hồ sơ phải duy trì trong suốt vòng đời của nhà máy, ngoài hồ sơ pháp lý ban đầu.</p>
     ${cards}
-    <div class="update">
-      <strong>Lưu ý:</strong> Ngoài 4 loại trên, một số nhà máy còn phải duy trì: <em>Sổ theo dõi vận hành XLNT</em>, <em>Kế hoạch ứng phó sự cố môi trường</em>, <em>Báo cáo công tác BVMT đột xuất</em> khi có sự cố.
-    </div>
   </section>`;
 }
 
@@ -974,14 +877,11 @@ function renderTinhThanh(){
   const tinhRows=tinhList.map(t=>`<tr><td class="code">${t.ma}</td><td><strong>${t.ten}</strong></td><td>${t.ghiChu}</td></tr>`).join("");
   return `<section class="section" id="sec-tinhthanh">
     <h2 class="section-title">34 Tỉnh, Thành phố sau sáp nhập</h2>
-    <p class="section-desc">Theo Nghị quyết 202/2025/QH15 (hiệu lực 01/7/2025). 6 thành phố TW + 28 tỉnh.</p>
+    <p class="section-desc">Theo Nghị quyết 202/2025/QH15. 6 thành phố TW + 28 tỉnh.</p>
     <h3 style="font-family:var(--sans);font-size:15px;margin:22px 0 10px;color:var(--forest-deep);">🏙️ 6 Thành phố trực thuộc Trung ương</h3>
     <table class="tbl"><thead><tr><th style="width:130px">Mã</th><th style="width:220px">Tên</th><th>Ghi chú</th></tr></thead><tbody>${twRows}</tbody></table>
     <h3 style="font-family:var(--sans);font-size:15px;margin:22px 0 10px;color:var(--forest-deep);">🏞️ 28 Tỉnh</h3>
     <table class="tbl"><thead><tr><th style="width:130px">Mã</th><th style="width:220px">Tên</th><th>Ghi chú</th></tr></thead><tbody>${tinhRows}</tbody></table>
-    <div class="update" style="margin-top:20px;">
-      <strong>Lưu ý:</strong> Sau sáp nhập (01/7/2025), cả nước <strong>không còn cấp huyện</strong> — chỉ còn 2 cấp: <strong>tỉnh → xã/phường/đặc khu</strong>.
-    </div>
   </section>`;
 }
 
@@ -1048,7 +948,6 @@ function renderLich(){
   return `<section class="section" id="sec-lich">
     <h2 class="section-title">Lịch nghĩa vụ định kỳ</h2>
     <div class="cal-strip">${rows}</div>
-    <div class="update">Hạn nộp Báo cáo BVMT định kỳ: <strong>trước 15/01</strong>. Gia hạn GPKT: nộp trước <strong>90 ngày</strong> khi hết hạn.</div>
   </section>`;
 }
 
@@ -1078,12 +977,6 @@ function renderVipham(){
   </section>`;
 }
 
-document.getElementById("content").innerHTML=
-  renderCongTy()+renderFormWizard()+renderTracuunhanh()+renderCanCu()+renderTinhThanh()+renderCoQuan()+
-  renderNhom()+renderMatrix()+renderThuTuc("dtm")+renderThuTuc("gpmt")+renderThuTuc("dkmt")+
-  renderHoSoVanHanh()+renderLich()+renderBieumau()+renderVipham();
-initFormWizard();
-
 /* ===== INTERACTIONS ===== */
 function activateTab(sectionId){
   document.querySelectorAll(".section").forEach(s=>s.classList.remove("active-tab"));
@@ -1107,8 +1000,6 @@ function goToTarget(targetId){
     if(el&&targetId!==sectionId){el.scrollIntoView({behavior:"smooth",block:"center"});el.classList.add("hl-flash");setTimeout(()=>el.classList.remove("hl-flash"),1700);}
   });
 }
-document.querySelectorAll(".rail-btn").forEach(btn=>btn.addEventListener("click",()=>goToTarget(btn.dataset.goto)));
-activateTab("sec-congty");
 
 const rail=document.getElementById("rail");
 const railBackdrop=document.getElementById("railBackdrop");
@@ -1116,100 +1007,144 @@ const mainArea=document.getElementById("mainArea");
 function openRail(){rail.classList.add("open");if(window.innerWidth>880)mainArea.classList.add("rail-open-desktop");else railBackdrop.classList.add("show");}
 function closeRail(){rail.classList.remove("open");mainArea.classList.remove("rail-open-desktop");railBackdrop.classList.remove("show");}
 function toggleRail(){rail.classList.contains("open")?closeRail():openRail();}
-document.getElementById("railToggle").addEventListener("click",toggleRail);
-railBackdrop.addEventListener("click",closeRail);
-if(window.innerWidth>880)openRail();
 
-const THEME_KEY="tracuu_mt_theme_v35";
+const THEME_KEY="tracuu_mt_theme_v40";
 const iconMoon=document.getElementById("iconMoon");
 const iconSun=document.getElementById("iconSun");
 function applyTheme(t){document.documentElement.setAttribute("data-theme",t);iconMoon.style.display=t==="dark"?"none":"";iconSun.style.display=t==="dark"?"":'none';}
 const savedTheme=localStorage.getItem(THEME_KEY)||(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
 applyTheme(savedTheme);
-document.getElementById("themeToggle").addEventListener("click",()=>{
-  const cur=document.documentElement.getAttribute("data-theme");
-  const next=cur==="dark"?"light":"dark";
-  applyTheme(next);localStorage.setItem(THEME_KEY,next);
-});
-
-document.getElementById("plantFilter").addEventListener("click",e=>{
-  const btn=e.target.closest(".form-chip");if(!btn)return;
-  document.querySelectorAll("#plantFilter .form-chip").forEach(b=>b.classList.remove("active"));
-  btn.classList.add("active");
-  const key=btn.dataset.pf;
-  document.querySelectorAll("#plantCards .plant-card").forEach(card=>{card.style.display=(key==="ALL"||card.dataset.pstatus===key)?"":"none";});
-});
-document.getElementById("nhomTabs").addEventListener("click",e=>{
-  const btn=e.target.closest(".tab");if(!btn)return;
-  document.querySelectorAll("#nhomTabs .tab").forEach(b=>b.classList.remove("active"));
-  btn.classList.add("active");
-  document.querySelectorAll(".nhom-panel").forEach(p=>{p.style.display=(p.dataset.panel===btn.dataset.nhom)?"":"none";});
-});
-document.getElementById("formFilter").addEventListener("click",e=>{
-  const btn=e.target.closest(".form-chip");if(!btn)return;
-  document.querySelectorAll("#formFilter .form-chip").forEach(b=>b.classList.remove("active"));
-  btn.classList.add("active");
-  const key=btn.dataset.fm;
-  document.querySelectorAll("#formTbody tr").forEach(tr=>{tr.style.display=(key==="ALL"||tr.dataset.fmgroup===key)?"":"none";});
-});
-
-document.addEventListener("click",e=>{
-  const openDd = e.target.closest(".file-group-btn");
-  document.querySelectorAll(".file-dropdown.show").forEach(dd=>{ if(!openDd || dd.id!==openDd.dataset.dropdown) dd.classList.remove("show"); });
-  if(openDd){
-    e.preventDefault();
-    const dd = document.getElementById(openDd.dataset.dropdown);
-    if(dd) dd.classList.toggle("show");
-  }
-});
 
 /* ===== SEARCH ===== */
 function normalize(s){return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/đ/g,"d");}
 const SEARCH_INDEX=[];
 function idx(tag,title,snip,target){SEARCH_INDEX.push({tag,title,snip,target,n:normalize(title+" "+snip+" "+tag)});}
-DATA.canCu.forEach(r=>idx("Căn cứ",r[1],r[3],"sec-canccu"));
-DATA.coQuan.forEach(r=>idx("Cơ quan",r[1],r[2],"sec-coquan"));
-DATA.decisionTree.forEach((d,i)=>idx("Tra cứu nhanh",d.q,d.yes,"dt-"+i));
-Object.keys(DATA.nhom).forEach(g=>{
-  const d=DATA.nhom[g];
-  idx("Nhóm "+g,d.full,d.canCuChiTiet,"sec-nhom");
-  d.rows.forEach(r=>idx("Nhóm "+g,r.tt,r.coQuan,"sec-nhom"));
-});
-Object.keys(DATA.thuTuc).forEach(k=>{
-  const d=DATA.thuTuc[k];
-  idx(d.tag,d.title,d.doiTuong,"sec-"+k);
-  d.steps.forEach((s,i)=>idx(d.tag+" bước "+(i+1),s.t,s.forms,"sec-"+k));
-});
-DATA.lich.forEach(r=>idx("Lịch",r[1],r[0]+" "+r[2],"sec-lich"));
-Object.keys(DATA.bieumau).forEach(k=>DATA.bieumau[k].items.forEach(it=>idx("Biểu mẫu "+k,it[0],it[1],"sec-bieumau")));
-DATA.vipham.forEach(r=>idx("Vi phạm",r[0],r[1]+" "+r[2],"sec-vipham"));
-DATA.congTyNhaMay.forEach(p=>idx("Công ty",p.ten,p.diaDiem+" — "+p.congSuat,"sec-congty"));
-DATA.tinhThanh.forEach(t=>idx("Tỉnh/Thành",t.ten,t.ghiChu,"sec-tinhthanh"));
-DATA.hoSoVanHanh.forEach(h=>{
-  idx("Hồ sơ vận hành",h.nhan,h.mau+" — "+h.coQuan,"sec-hoso");
-  h.noiDung.forEach(x=>idx("Hồ sơ vận hành",h.nhan,x,"sec-hoso"));
-});
 
-const searchInput=document.getElementById("searchInput");
-const searchResults=document.getElementById("searchResults");
-searchInput.addEventListener("input",()=>{
-  const q=searchInput.value.trim();
-  if(!q){searchResults.classList.remove("show");return;}
-  const tokens=normalize(q).split(/\s+/).filter(Boolean);
-  const matches=SEARCH_INDEX.filter(item=>tokens.every(t=>item.n.includes(t)));
-  if(!matches.length){
-    searchResults.innerHTML=`<div class="sr-empty">Không tìm thấy "${q}".</div>`;
-  }else{
-    searchResults.innerHTML=matches.slice(0,18).map(r=>`<button class="sr-item" data-target="${r.target}"><span class="sr-tag" style="background:var(--paper-deep);color:var(--forest-deep);">${r.tag}</span><div class="sr-title">${r.title}</div><div class="sr-snip">${r.snip}</div></button>`).join("");
+/* ===== KHỞI TẠO ===== */
+async function init(){
+  try{
+    const res = await fetch('data.json', {cache: 'no-store'});
+    if(!res.ok) throw new Error("HTTP "+res.status);
+    const json = await res.json();
+    if(!json.congTy || !Array.isArray(json.congTy)) throw new Error("data.json thiếu trường 'congTy'");
+    DATA.congTyNhaMay = json.congTy;
+    console.log("[v4.0] Đã tải data.json —", DATA.congTyNhaMay.length, "nhà máy");
+    renderToanBo();
+  }catch(err){
+    console.error("Lỗi tải data.json:", err);
+    document.getElementById("content").innerHTML = `
+      <div class="error-box">
+        <strong>⚠️ Không tải được dữ liệu từ <code>data.json</code></strong>
+        <p>Nguyên nhân có thể:</p>
+        <ul>
+          <li>Chưa tạo file <code>data.json</code> trong repo (cùng thư mục với <code>index.html</code>)</li>
+          <li>File có lỗi cú pháp JSON (thiếu dấu phẩy, ngoặc kép…)</li>
+          <li>Đang mở file trực tiếp bằng <code>file://</code> (trình duyệt chặn fetch)</li>
+          <li>GitHub Pages chưa rebuild xong (chờ 1–2 phút rồi Ctrl+Shift+R)</li>
+        </ul>
+        <p><strong>Chi tiết lỗi:</strong> ${err.message}</p>
+      </div>`;
   }
-  searchResults.classList.add("show");
-});
-searchInput.addEventListener("focus",()=>{if(searchInput.value.trim())searchResults.classList.add("show");});
-document.addEventListener("click",e=>{if(!e.target.closest(".search-wrap"))searchResults.classList.remove("show");});
-searchResults.addEventListener("click",e=>{
-  const btn=e.target.closest(".sr-item");if(!btn)return;
-  goToTarget(btn.dataset.target);searchResults.classList.remove("show");
-});
+}
+
+function renderToanBo(){
+  document.getElementById("content").innerHTML=
+    renderCongTy()+renderFormWizard()+renderTracuunhanh()+renderCanCu()+renderTinhThanh()+renderCoQuan()+
+    renderNhom()+renderMatrix()+renderThuTuc("dtm")+renderThuTuc("gpmt")+renderThuTuc("dkmt")+
+    renderHoSoVanHanh()+renderLich()+renderBieumau()+renderVipham();
+
+  // Gắn sự kiện
+  document.querySelectorAll(".rail-btn").forEach(btn=>btn.addEventListener("click",()=>goToTarget(btn.dataset.goto)));
+  activateTab("sec-congty");
+  document.getElementById("railToggle").addEventListener("click",toggleRail);
+  railBackdrop.addEventListener("click",closeRail);
+  if(window.innerWidth>880)openRail();
+  document.getElementById("themeToggle").addEventListener("click",()=>{
+    const cur=document.documentElement.getAttribute("data-theme");
+    const next=cur==="dark"?"light":"dark";
+    applyTheme(next);localStorage.setItem(THEME_KEY,next);
+  });
+  document.getElementById("plantFilter").addEventListener("click",e=>{
+    const btn=e.target.closest(".form-chip");if(!btn)return;
+    document.querySelectorAll("#plantFilter .form-chip").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    const key=btn.dataset.pf;
+    document.querySelectorAll("#plantCards .plant-card").forEach(card=>{card.style.display=(key==="ALL"||card.dataset.pstatus===key)?"":"none";});
+  });
+  document.getElementById("nhomTabs").addEventListener("click",e=>{
+    const btn=e.target.closest(".tab");if(!btn)return;
+    document.querySelectorAll("#nhomTabs .tab").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    document.querySelectorAll(".nhom-panel").forEach(p=>{p.style.display=(p.dataset.panel===btn.dataset.nhom)?"":"none";});
+  });
+  document.getElementById("formFilter").addEventListener("click",e=>{
+    const btn=e.target.closest(".form-chip");if(!btn)return;
+    document.querySelectorAll("#formFilter .form-chip").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    const key=btn.dataset.fm;
+    document.querySelectorAll("#formTbody tr").forEach(tr=>{tr.style.display=(key==="ALL"||tr.dataset.fmgroup===key)?"":"none";});
+  });
+  initFormWizard();
+
+  // Build search index
+  DATA.canCu.forEach(r=>idx("Căn cứ",r[1],r[3],"sec-canccu"));
+  DATA.coQuan.forEach(r=>idx("Cơ quan",r[1],r[2],"sec-coquan"));
+  DATA.decisionTree.forEach((d,i)=>idx("Tra cứu nhanh",d.q,d.yes,"dt-"+i));
+  Object.keys(DATA.nhom).forEach(g=>{
+    const d=DATA.nhom[g];
+    idx("Nhóm "+g,d.full,d.canCuChiTiet,"sec-nhom");
+    d.rows.forEach(r=>idx("Nhóm "+g,r.tt,r.coQuan,"sec-nhom"));
+  });
+  Object.keys(DATA.thuTuc).forEach(k=>{
+    const d=DATA.thuTuc[k];
+    idx(d.tag,d.title,d.doiTuong,"sec-"+k);
+    d.steps.forEach((s,i)=>idx(d.tag+" bước "+(i+1),s.t,s.forms,"sec-"+k));
+  });
+  DATA.lich.forEach(r=>idx("Lịch",r[1],r[0]+" "+r[2],"sec-lich"));
+  Object.keys(DATA.bieumau).forEach(k=>DATA.bieumau[k].items.forEach(it=>idx("Biểu mẫu "+k,it[0],it[1],"sec-bieumau")));
+  DATA.vipham.forEach(r=>idx("Vi phạm",r[0],r[1]+" "+r[2],"sec-vipham"));
+  DATA.congTyNhaMay.forEach(p=>idx("Công ty",p.ten,p.diaDiem+" — "+p.congSuat,"sec-congty"));
+  DATA.tinhThanh.forEach(t=>idx("Tỉnh/Thành",t.ten,t.ghiChu,"sec-tinhthanh"));
+  DATA.hoSoVanHanh.forEach(h=>{
+    idx("Hồ sơ vận hành",h.nhan,h.mau+" — "+h.coQuan,"sec-hoso");
+    h.noiDung.forEach(x=>idx("Hồ sơ vận hành",h.nhan,x,"sec-hoso"));
+  });
+
+  // Search
+  const searchInput=document.getElementById("searchInput");
+  const searchResults=document.getElementById("searchResults");
+  searchInput.addEventListener("input",()=>{
+    const q=searchInput.value.trim();
+    if(!q){searchResults.classList.remove("show");return;}
+    const tokens=normalize(q).split(/\s+/).filter(Boolean);
+    const matches=SEARCH_INDEX.filter(item=>tokens.every(t=>item.n.includes(t)));
+    if(!matches.length){
+      searchResults.innerHTML=`<div class="sr-empty">Không tìm thấy "${q}".</div>`;
+    }else{
+      searchResults.innerHTML=matches.slice(0,18).map(r=>`<button class="sr-item" data-target="${r.target}"><span class="sr-tag" style="background:var(--paper-deep);color:var(--forest-deep);">${r.tag}</span><div class="sr-title">${r.title}</div><div class="sr-snip">${r.snip}</div></button>`).join("");
+    }
+    searchResults.classList.add("show");
+  });
+  searchInput.addEventListener("focus",()=>{if(searchInput.value.trim())searchResults.classList.add("show");});
+  document.addEventListener("click",e=>{if(!e.target.closest(".search-wrap"))searchResults.classList.remove("show");});
+  searchResults.addEventListener("click",e=>{
+    const btn=e.target.closest(".sr-item");if(!btn)return;
+    goToTarget(btn.dataset.target);searchResults.classList.remove("show");
+  });
+
+  // Dropdown file
+  document.addEventListener("click",e=>{
+    const openDd = e.target.closest(".file-group-btn");
+    document.querySelectorAll(".file-dropdown.show").forEach(dd=>{ if(!openDd || dd.id!==openDd.dataset.dropdown) dd.classList.remove("show"); });
+    if(openDd){
+      e.preventDefault();
+      const dd = document.getElementById(openDd.dataset.dropdown);
+      if(dd) dd.classList.toggle("show");
+    }
+  });
+}
+
+init();
 </script>
 </body>
 </html>
