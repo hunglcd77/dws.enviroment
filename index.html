@@ -133,6 +133,9 @@ html[data-theme="dark"] .tbl tr:nth-child(even) td{background:#1B2119;}
 .cal-when{flex:0 0 150px;font-family:var(--sans);font-weight:700;font-size:12.5px;color:var(--forest-deep);background:var(--paper-deep);padding:5px 10px;border-radius:4px;text-align:center;}
 .cal-what{flex:1;font-size:14.5px;padding-top:3px;}
 .cal-what small{display:block;font-family:var(--sans);font-size:12px;color:var(--ink-soft);margin-top:2px;}
+.form-toolbar{display:flex;gap:8px;margin-bottom:14px;font-family:var(--sans);flex-wrap:wrap;}
+.tbtn{font-family:var(--sans);font-size:12px;font-weight:600;color:var(--forest-deep);background:var(--paper-deep);border:1px solid var(--line);border-radius:6px;padding:6px 12px;cursor:pointer;}
+.tbtn:hover{background:var(--paper);}
 .link-btn{display:inline-flex;align-items:center;gap:5px;font-family:var(--sans);font-size:12px;font-weight:700;color:var(--forest-deep);background:var(--paper-deep);border:1px solid var(--line);border-radius:5px;padding:4px 9px;text-decoration:none;cursor:pointer;}
 .link-btn:hover{background:var(--forest);color:#fff;border-color:var(--forest);}
 .link-btn.gpmt-file{background:#E6F5EC;color:#1E7A45;border-color:#2E9E5B;}
@@ -234,7 +237,7 @@ html[data-theme="dark"] .link-btn-empty{color:#5A635A;border-color:#3A423A;}
 .data-source-badge.live{background:#E6F5EC;color:#1E7A45;}
 .data-source-badge.fallback{background:#FCF1D8;color:#95700E;}
 .status-filter{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;}
-.plant-card{background:var(--paper-deep);border:1px solid var(--line-soft);border-left:4px solid #B9C0B4;border-radius:8px;padding:13px 16px;margin-bottom:10px;font-family:var(--sans);box-shadow:var(--shadow-sm);}
+.plant-card{background:var(--paper-deep);border:1px solid var(--line-soft);border-left:4px solid #B9C0B4;border-radius:8px;padding:13px 16px;margin-bottom:10px;font-family:var(--sans);box-shadow:var(--shadow-sm);transition:box-shadow .2s ease;}
 .plant-card.st-green{border-left-color:#2E9E5B;}
 .plant-card.st-yellow{border-left-color:#E0A215;}
 .plant-card.st-red{border-left-color:#C0392B;}
@@ -247,13 +250,23 @@ html[data-theme="dark"] .link-btn-empty{color:#5A635A;border-color:#3A423A;}
 .plant-status-label.st-yellow{background:#FCF1D8;color:#95700E;}
 .plant-status-label.st-red{background:#FBE7E4;color:#A0332A;}
 .foot{font-family:var(--sans);font-size:12px;color:var(--ink-soft);border-top:1px solid var(--line);padding:22px 34px;max-width:1080px;}
-.hl-flash{animation:flash 1.6s ease;}
-@keyframes flash{0%{background:#FCE9B8;}100%{background:transparent;}}
+/* Hiệu ứng highlight khi tìm kiếm nhảy tới */
+.hl-flash{animation:flash 2.4s ease;box-shadow:0 0 0 4px rgba(212,160,23,.5), 0 8px 24px rgba(212,160,23,.3);}
+@keyframes flash{
+  0%{background:#FCE9B8;transform:scale(1.02);}
+  40%{background:#FCE9B8;transform:scale(1.02);}
+  70%{background:#FCE9B8;transform:scale(1);}
+  100%{background:transparent;transform:scale(1);}
+}
+/* Hiệu ứng riêng cho nhà máy được tìm thấy */
+.plant-card.hl-flash{background:#FEF3D0;border-left-width:6px;}
+html[data-theme="dark"] .plant-card.hl-flash{background:#3A2E18;}
 .loading-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 20px;text-align:center;font-family:var(--sans);color:var(--ink-soft);}
 .loading-spinner{width:50px;height:50px;border:4px solid var(--line);border-top-color:var(--forest);border-radius:50%;animation:spin 1s linear infinite;margin-bottom:20px;}
 @keyframes spin{to{transform:rotate(360deg);}}
 .error-box{background:var(--warn-bg);border-left:4px solid var(--warn-line);padding:16px 20px;border-radius:6px;font-family:var(--sans);margin:20px 0;max-width:600px;}
 .error-box strong{color:var(--red);}
+.error-box code{background:var(--paper-deep);padding:2px 6px;border-radius:3px;font-size:12px;}
 @media (max-width:880px){
   body{overflow-x:hidden;}
   .rail{width:86vw;max-width:300px;}
@@ -265,6 +278,7 @@ html[data-theme="dark"] .link-btn-empty{color:#5A635A;border-color:#3A423A;}
   .wizard-grid{grid-template-columns:1fr;}
   .plant-files-label{min-width:auto;}
   .plant-files-row{flex-direction:column;align-items:flex-start;}
+  .stat-card{min-width:calc(50% - 7px);}
 }
 </style>
 </head>
@@ -278,7 +292,7 @@ html[data-theme="dark"] .link-btn-empty{color:#5A635A;border-color:#3A423A;}
       <div class="rail-logo">MT</div>
       <div><p class="rail-brand">Tra cứu Thủ tục<br>Môi trường</p></div>
     </div>
-    <p class="rail-sub">Công ty CP Cấp nước &amp; Môi trường Đô thị Đồng Tháp — v4.0, 09/2026</p>
+    <p class="rail-sub">Công ty CP Cấp nước &amp; Môi trường Đô thị Đồng Tháp — v5.0, 09/2026</p>
 
     <div class="rail-group">
       <p class="rail-label">Công ty</p>
@@ -324,7 +338,7 @@ html[data-theme="dark"] .link-btn-empty{color:#5A635A;border-color:#3A423A;}
         </button>
         <div class="search-wrap">
           <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input id="searchInput" class="search-input" type="text" placeholder="Tìm thủ tục, nhà máy, tỉnh thành…" autocomplete="off">
+          <input id="searchInput" class="search-input" type="text" placeholder="Tìm thủ tục, nhà máy (VD: Đông Bình), tỉnh thành, mẫu số…" autocomplete="off">
           <div id="searchResults" class="search-results"></div>
         </div>
         <button class="rail-toggle" id="themeToggle" aria-label="Đổi chế độ" style="margin-left:10px;">
@@ -332,7 +346,7 @@ html[data-theme="dark"] .link-btn-empty{color:#5A635A;border-color:#3A423A;}
           <svg id="iconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2M12 19.5v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2.5 12h2M19.5 12h2"/></svg>
         </button>
       </div>
-      <p class="search-hint">Gõ để tìm trong toàn bộ nội dung sổ tay.</p>
+      <p class="search-hint">Gõ tên nhà máy → bấm kết quả → tự nhảy tới đúng vị trí và nhấp nháy vàng để nhận biết.</p>
     </div>
 
     <div class="content" id="content">
@@ -343,17 +357,15 @@ html[data-theme="dark"] .link-btn-empty{color:#5A635A;border-color:#3A423A;}
     </div>
 
     <div class="foot">
-      Công cụ tra cứu — v4.0 (09/2026) · Dữ liệu tách riêng trong <code>data.json</code> · Chỉ cần cập nhật file JSON khi có hồ sơ mới.
+      Công cụ tra cứu — Sổ tay Hướng dẫn Thủ tục Môi trường v5.0 (09/2026). Căn cứ Luật BVMT 72/2020/QH14 (sửa đổi bởi Luật 146/2025/QH15), VBHN 49/VBHN-BNNMT, VBHN 55/VBHN-BNNMT, NQ 202/2025/QH15 (34 tỉnh/thành).
     </div>
   </div>
 </div>
 
 <script>
 /* =========================================================================
-   HỆ THỐNG v4.0 — Dữ liệu tách khỏi code
-   - Cấu hình tĩnh (danh mục thủ tục, tỉnh thành, biểu mẫu…) nằm trong JS
-   - Dữ liệu động (28 nhà máy + hồ sơ) nằm trong data.json
-   - Khi có file mới: chỉ sửa data.json, KHÔNG cần đụng index.html
+   CẤU HÌNH TĨNH — Danh mục thủ tục, tỉnh thành, biểu mẫu, ngành nghề
+   Dữ liệu động (28 nhà máy) nằm trong data.json
    ========================================================================= */
 
 const LOAI_HOSO = [
@@ -365,7 +377,6 @@ const LOAI_HOSO = [
   {key:"fileKhac",     nhan:"Tài liệu khác",  icon:"📁", css:"khac-file",     moTa:"PCCC, XLNT, sự cố môi trường…"}
 ];
 
-/* Cấu hình tĩnh — không cần sửa thường xuyên */
 const DATA_TINH = {
   canCu:[
     ["1","Luật Bảo vệ môi trường 72/2020/QH14","01/01/2022","Khung pháp lý tổng thể về BVMT."],
@@ -577,7 +588,7 @@ const DATA_TINH = {
   ]
 };
 
-/* Biến DATA — được nạp từ data.json khi trang tải */
+/* Biến DATA — sẽ được nạp từ data.json */
 let DATA = Object.assign({}, DATA_TINH, {congTyNhaMay: []});
 
 /* ===== HELPERS ===== */
@@ -585,7 +596,6 @@ const DK_LABEL={req:"BẮT BUỘC",cond:"CÓ ĐIỀU KIỆN",na:"KHÔNG ÁP DỤ
 const DK_CLASS={req:"badge-required",cond:"badge-conditional",na:"badge-na",rep:"badge-replace"};
 const MCELL_CLASS={req:"req",cond:"cond",na:"na",rep:"rep"};
 function badge(dk){return `<span class="badge ${DK_CLASS[dk]}">${DK_LABEL[dk]}</span>`;}
-
 function chuanHoaFile(val){
   if(!val) return [];
   if(typeof val === "string") return val.trim() ? [{url:val, nhan:""}] : [];
@@ -637,7 +647,7 @@ function classify(st){
   return{nganh,tinh,finalNhom,canDanhGiaSoBo:canDTM&&(nganh.dtmLuon||quyMoLon),canDTM,canGPMT,canDKMT,dkmtCapTinh,dkmtCapXa,coQuanDTM,coQuanGPMT,coQuanDKMT,thoiHanDTM,thoiHanGPMT:"07–10 năm",nguongNuocThaiGPMT:nguongNT,nguongKhiThaiGPMT:N.gpmt_khiThai,chiTietNguon:{nt:{nhan:st.nuocThai>0?st.nuocThai+" m³/ngày":"Không phát sinh"},kt:{nhan:st.khiThai>0?st.khiThai+" m³/giờ":"Không phát sinh"}}};
 }
 
-/* ===== RENDER các section ===== */
+/* ===== RENDER SECTIONS ===== */
 function renderFormWizard(){
   const nganhOpts=DATA.nganhNghe.map(n=>`<option value="${n.ma}">${n.ten}</option>`).join("");
   const twList=DATA.tinhThanh.filter(t=>t.loai==="TW");
@@ -784,9 +794,9 @@ function renderCongTy(){
     const st=p.status.gpmt;
     const filesPhapLy = LOAI_HOSO.filter(l=>l.key==="fileGPMT"||l.key==="fileDKMT").map(l=>renderFileGroup(p,l)).join("");
     const filesVanHanh = LOAI_HOSO.filter(l=>l.key!=="fileGPMT"&&l.key!=="fileDKMT").map(l=>renderFileGroup(p,l)).join("");
-    return `<div class="plant-card st-${st}" data-pstatus="${st}">
+    return `<div class="plant-card st-${st}" data-pstatus="${st}" id="plant-${p.id}">
       <div class="plant-head">
-        <span class="plant-name">${p.ten}</span>
+        <span class="plant-name">${p.ten} <code style="font-size:11px;color:#8A9389;font-weight:600;background:var(--paper);padding:2px 6px;border-radius:3px;margin-left:6px;">${p.id}</code></span>
         <span class="plant-status-label st-${st}"><span class="status-dot status-${st}"></span>${STATUS_TEXT[st]}</span>
       </div>
       <div class="plant-meta">📍 ${p.diaDiem} &nbsp;·&nbsp; Công suất: <strong>${p.congSuat}</strong> &nbsp;·&nbsp; Phụ trách: ${p.nguoiPhuTrach}</div>
@@ -801,7 +811,7 @@ function renderCongTy(){
     <p class="section-eyebrow">Cơ sở dữ liệu nội bộ — MT-1P</p>
     <h2 class="section-title">Danh sách &amp; Thủ tục Môi trường của Công ty</h2>
     <p class="section-desc">Trạng thái và hồ sơ môi trường của ${total} nhà máy. Mỗi nhà máy hiển thị đủ 6 loại hồ sơ. Nút <em>mờ</em> = chưa có file.</p>
-    <div id="dataSourceBadge" class="data-source-badge live">🟢 Dữ liệu tải từ <code>data.json</code> — v4.0</div>
+    <div id="dataSourceBadge" class="data-source-badge live">🟢 Dữ liệu tải từ <code>data.json</code> — v5.0</div>
     ${dashboard}
     <div class="status-legend">
       <span><span class="status-dot status-green"></span>Đã có GPMT hoặc ĐKMT</span>
@@ -977,7 +987,7 @@ function renderVipham(){
   </section>`;
 }
 
-/* ===== INTERACTIONS ===== */
+/* ===== NAVIGATION — ĐÃ FIX TÌM KIẾM ===== */
 function activateTab(sectionId){
   document.querySelectorAll(".section").forEach(s=>s.classList.remove("active-tab"));
   const sec=document.getElementById(sectionId);
@@ -987,38 +997,112 @@ function activateTab(sectionId){
   if(window.innerWidth<=880&&topbar)topbar.scrollIntoView({behavior:"instant",block:"start"});
   else window.scrollTo(0,0);
 }
+
+/**
+ * goToTarget — Hàm điều hướng thông minh
+ * - Nếu target là "sec-xxx": mở tab, cuộn lên đầu
+ * - Nếu target là "plant-nmXX": mở tab Công ty, reset filter, cuộn tới nhà máy, highlight
+ * - Nếu target là "dt-0", "hs-baocao"…: mở tab chứa, cuộn tới phần tử
+ */
 function goToTarget(targetId){
-  let sectionId=targetId;
-  if(!targetId.startsWith("sec-")){
-    const el=document.getElementById(targetId);
-    const parent=el?el.closest(".section"):null;
-    sectionId=parent?parent.id:targetId;
+  let sectionId = targetId;
+  
+  // Xác định section cần mở
+  if(targetId.startsWith("plant-")){
+    sectionId = "sec-congty";
+  } else if(targetId.startsWith("sec-")){
+    sectionId = targetId;
+  } else {
+    // Với các target khác (dt-0, hs-baocao...) → tìm section cha
+    const el = document.getElementById(targetId);
+    const parent = el ? el.closest(".section") : null;
+    sectionId = parent ? parent.id : targetId;
   }
+  
+  // Mở tab
   activateTab(sectionId);
-  requestAnimationFrame(()=>{
-    const el=document.getElementById(targetId);
-    if(el&&targetId!==sectionId){el.scrollIntoView({behavior:"smooth",block:"center"});el.classList.add("hl-flash");setTimeout(()=>el.classList.remove("hl-flash"),1700);}
-  });
+  
+  // Nếu target KHÁC section cha → cần cuộn tới phần tử con
+  if(targetId !== sectionId){
+    // Đối với nhà máy: cần reset filter trước để đảm bảo nhà máy hiển thị
+    if(targetId.startsWith("plant-")){
+      const allChip = document.querySelector('#plantFilter .form-chip[data-pf="ALL"]');
+      if(allChip && !allChip.classList.contains("active")){
+        document.querySelectorAll("#plantFilter .form-chip").forEach(b=>b.classList.remove("active"));
+        allChip.classList.add("active");
+        document.querySelectorAll("#plantCards .plant-card").forEach(card=>{ card.style.display = ""; });
+      }
+    }
+    
+    // Đợi DOM render xong rồi mới scroll (quan trọng khi vừa activateTab)
+    setTimeout(()=>{
+      const el = document.getElementById(targetId);
+      if(!el) return;
+      
+      // Cuộn tới phần tử (block: center = giữa màn hình)
+      el.scrollIntoView({behavior:"smooth", block:"center"});
+      
+      // Hiệu ứng nhấp nháy vàng
+      el.classList.add("hl-flash");
+      
+      // Xóa hiệu ứng sau 2.4 giây
+      setTimeout(()=>el.classList.remove("hl-flash"), 2400);
+    }, 120);
+  }
 }
 
-const rail=document.getElementById("rail");
-const railBackdrop=document.getElementById("railBackdrop");
-const mainArea=document.getElementById("mainArea");
-function openRail(){rail.classList.add("open");if(window.innerWidth>880)mainArea.classList.add("rail-open-desktop");else railBackdrop.classList.add("show");}
-function closeRail(){rail.classList.remove("open");mainArea.classList.remove("rail-open-desktop");railBackdrop.classList.remove("show");}
-function toggleRail(){rail.classList.contains("open")?closeRail():openRail();}
+/* ===== BUILD SEARCH INDEX — ĐÃ FIX CHO NHÀ MÁY ===== */
+function buildSearchIndex(){
+  const SEARCH_INDEX = [];
+  function idx(tag,title,snip,target){
+    SEARCH_INDEX.push({tag, title, snip, target, n: normalize(title+" "+snip+" "+tag+" "+target)});
+  }
+  // Căn cứ
+  DATA.canCu.forEach(r=>idx("Căn cứ", r[1], r[3], "sec-canccu"));
+  // Cơ quan
+  DATA.coQuan.forEach(r=>idx("Cơ quan", r[1], r[2], "sec-coquan"));
+  // Decision tree
+  DATA.decisionTree.forEach((d,i)=>idx("Tra cứu nhanh", d.q, d.yes, "dt-"+i));
+  // Nhóm
+  Object.keys(DATA.nhom).forEach(g=>{
+    const d=DATA.nhom[g];
+    idx("Nhóm "+g, d.full, d.canCuChiTiet, "sec-nhom");
+    d.rows.forEach(r=>idx("Nhóm "+g, r.tt, r.coQuan+" — "+r.thoiHan, "sec-nhom"));
+  });
+  // Thủ tục
+  Object.keys(DATA.thuTuc).forEach(k=>{
+    const d=DATA.thuTuc[k];
+    idx(d.tag, d.title, d.doiTuong, "sec-"+k);
+    d.steps.forEach((s,i)=>idx(d.tag+" bước "+(i+1), s.t, s.forms, "sec-"+k));
+  });
+  // Lịch
+  DATA.lich.forEach(r=>idx("Lịch", r[1], r[0]+" — "+r[2], "sec-lich"));
+  // Biểu mẫu
+  Object.keys(DATA.bieumau).forEach(k=>{
+    DATA.bieumau[k].items.forEach(it=>idx("Biểu mẫu "+k, it[0], it[1], "sec-bieumau"));
+  });
+  // Vi phạm
+  DATA.vipham.forEach(r=>idx("Vi phạm", r[0], r[1]+" "+r[2], "sec-vipham"));
+  // Nhà máy — QUAN TRỌNG: target phải là "plant-nmXX", không phải "sec-congty"
+  DATA.congTyNhaMay.forEach(p=>{
+    // Tìm kiếm theo tên + id + địa điểm + công suất
+    idx("🏭 Nhà máy", p.ten, p.diaDiem+" · "+p.congSuat+" · Mã: "+p.id, "plant-"+p.id);
+    // Thêm 1 entry riêng để tìm theo mã (VD: nm01, NM01)
+    idx("🏭 Nhà máy (theo mã)", p.id.toUpperCase()+" — "+p.ten, p.diaDiem, "plant-"+p.id);
+  });
+  // Tỉnh thành
+  DATA.tinhThanh.forEach(t=>idx("Tỉnh/Thành", t.ten, t.ghiChu, "sec-tinhthanh"));
+  // Hồ sơ vận hành
+  DATA.hoSoVanHanh.forEach(h=>{
+    idx("Hồ sơ vận hành", h.nhan, h.mau+" — "+h.coQuan, "sec-hoso");
+    h.noiDung.forEach(x=>idx("Hồ sơ vận hành", h.nhan, x, "sec-hoso"));
+  });
+  return SEARCH_INDEX;
+}
 
-const THEME_KEY="tracuu_mt_theme_v40";
-const iconMoon=document.getElementById("iconMoon");
-const iconSun=document.getElementById("iconSun");
-function applyTheme(t){document.documentElement.setAttribute("data-theme",t);iconMoon.style.display=t==="dark"?"none":"";iconSun.style.display=t==="dark"?"":'none';}
-const savedTheme=localStorage.getItem(THEME_KEY)||(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
-applyTheme(savedTheme);
-
-/* ===== SEARCH ===== */
-function normalize(s){return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/đ/g,"d");}
-const SEARCH_INDEX=[];
-function idx(tag,title,snip,target){SEARCH_INDEX.push({tag,title,snip,target,n:normalize(title+" "+snip+" "+tag)});}
+function normalize(s){
+  return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/đ/g,"d");
+}
 
 /* ===== KHỞI TẠO ===== */
 async function init(){
@@ -1028,7 +1112,7 @@ async function init(){
     const json = await res.json();
     if(!json.congTy || !Array.isArray(json.congTy)) throw new Error("data.json thiếu trường 'congTy'");
     DATA.congTyNhaMay = json.congTy;
-    console.log("[v4.0] Đã tải data.json —", DATA.congTyNhaMay.length, "nhà máy");
+    console.log("[v5.0] Đã tải data.json —", DATA.congTyNhaMay.length, "nhà máy");
     renderToanBo();
   }catch(err){
     console.error("Lỗi tải data.json:", err);
@@ -1048,102 +1132,142 @@ async function init(){
 }
 
 function renderToanBo(){
-  document.getElementById("content").innerHTML=
-    renderCongTy()+renderFormWizard()+renderTracuunhanh()+renderCanCu()+renderTinhThanh()+renderCoQuan()+
-    renderNhom()+renderMatrix()+renderThuTuc("dtm")+renderThuTuc("gpmt")+renderThuTuc("dkmt")+
-    renderHoSoVanHanh()+renderLich()+renderBieumau()+renderVipham();
-
-  // Gắn sự kiện
-  document.querySelectorAll(".rail-btn").forEach(btn=>btn.addEventListener("click",()=>goToTarget(btn.dataset.goto)));
+  document.getElementById("content").innerHTML =
+    renderCongTy() + renderFormWizard() + renderTracuunhanh() + renderCanCu() + renderTinhThanh() + renderCoQuan() +
+    renderNhom() + renderMatrix() + renderThuTuc("dtm") + renderThuTuc("gpmt") + renderThuTuc("dkmt") +
+    renderHoSoVanHanh() + renderLich() + renderBieumau() + renderVipham();
+  
+  initFormWizard();
   activateTab("sec-congty");
-  document.getElementById("railToggle").addEventListener("click",toggleRail);
-  railBackdrop.addEventListener("click",closeRail);
-  if(window.innerWidth>880)openRail();
-  document.getElementById("themeToggle").addEventListener("click",()=>{
-    const cur=document.documentElement.getAttribute("data-theme");
-    const next=cur==="dark"?"light":"dark";
-    applyTheme(next);localStorage.setItem(THEME_KEY,next);
+  
+  // Rail navigation
+  document.querySelectorAll(".rail-btn").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      goToTarget(btn.dataset.goto);
+      if(window.innerWidth<=880) closeRail();
+    });
   });
-  document.getElementById("plantFilter").addEventListener("click",e=>{
-    const btn=e.target.closest(".form-chip");if(!btn)return;
+  
+  // Rail toggle
+  document.getElementById("railToggle").addEventListener("click", toggleRail);
+  railBackdrop.addEventListener("click", closeRail);
+  if(window.innerWidth > 880) openRail();
+  
+  // Theme
+  document.getElementById("themeToggle").addEventListener("click", ()=>{
+    const cur = document.documentElement.getAttribute("data-theme");
+    const next = cur==="dark" ? "light" : "dark";
+    applyTheme(next);
+    localStorage.setItem(THEME_KEY, next);
+  });
+  
+  // Filter nhà máy
+  document.getElementById("plantFilter").addEventListener("click", e=>{
+    const btn=e.target.closest(".form-chip"); if(!btn) return;
     document.querySelectorAll("#plantFilter .form-chip").forEach(b=>b.classList.remove("active"));
     btn.classList.add("active");
-    const key=btn.dataset.pf;
-    document.querySelectorAll("#plantCards .plant-card").forEach(card=>{card.style.display=(key==="ALL"||card.dataset.pstatus===key)?"":"none";});
+    const key = btn.dataset.pf;
+    document.querySelectorAll("#plantCards .plant-card").forEach(card=>{
+      card.style.display = (key==="ALL" || card.dataset.pstatus===key) ? "" : "none";
+    });
   });
-  document.getElementById("nhomTabs").addEventListener("click",e=>{
-    const btn=e.target.closest(".tab");if(!btn)return;
+  
+  // Tab nhóm
+  document.getElementById("nhomTabs").addEventListener("click", e=>{
+    const btn=e.target.closest(".tab"); if(!btn) return;
     document.querySelectorAll("#nhomTabs .tab").forEach(b=>b.classList.remove("active"));
     btn.classList.add("active");
-    document.querySelectorAll(".nhom-panel").forEach(p=>{p.style.display=(p.dataset.panel===btn.dataset.nhom)?"":"none";});
+    document.querySelectorAll(".nhom-panel").forEach(p=>{
+      p.style.display = (p.dataset.panel === btn.dataset.nhom) ? "" : "none";
+    });
   });
-  document.getElementById("formFilter").addEventListener("click",e=>{
-    const btn=e.target.closest(".form-chip");if(!btn)return;
+  
+  // Filter biểu mẫu
+  document.getElementById("formFilter").addEventListener("click", e=>{
+    const btn=e.target.closest(".form-chip"); if(!btn) return;
     document.querySelectorAll("#formFilter .form-chip").forEach(b=>b.classList.remove("active"));
     btn.classList.add("active");
-    const key=btn.dataset.fm;
-    document.querySelectorAll("#formTbody tr").forEach(tr=>{tr.style.display=(key==="ALL"||tr.dataset.fmgroup===key)?"":"none";});
+    const key = btn.dataset.fm;
+    document.querySelectorAll("#formTbody tr").forEach(tr=>{
+      tr.style.display = (key==="ALL" || tr.dataset.fmgroup===key) ? "" : "none";
+    });
   });
-  initFormWizard();
-
-  // Build search index
-  DATA.canCu.forEach(r=>idx("Căn cứ",r[1],r[3],"sec-canccu"));
-  DATA.coQuan.forEach(r=>idx("Cơ quan",r[1],r[2],"sec-coquan"));
-  DATA.decisionTree.forEach((d,i)=>idx("Tra cứu nhanh",d.q,d.yes,"dt-"+i));
-  Object.keys(DATA.nhom).forEach(g=>{
-    const d=DATA.nhom[g];
-    idx("Nhóm "+g,d.full,d.canCuChiTiet,"sec-nhom");
-    d.rows.forEach(r=>idx("Nhóm "+g,r.tt,r.coQuan,"sec-nhom"));
-  });
-  Object.keys(DATA.thuTuc).forEach(k=>{
-    const d=DATA.thuTuc[k];
-    idx(d.tag,d.title,d.doiTuong,"sec-"+k);
-    d.steps.forEach((s,i)=>idx(d.tag+" bước "+(i+1),s.t,s.forms,"sec-"+k));
-  });
-  DATA.lich.forEach(r=>idx("Lịch",r[1],r[0]+" "+r[2],"sec-lich"));
-  Object.keys(DATA.bieumau).forEach(k=>DATA.bieumau[k].items.forEach(it=>idx("Biểu mẫu "+k,it[0],it[1],"sec-bieumau")));
-  DATA.vipham.forEach(r=>idx("Vi phạm",r[0],r[1]+" "+r[2],"sec-vipham"));
-  DATA.congTyNhaMay.forEach(p=>idx("Công ty",p.ten,p.diaDiem+" — "+p.congSuat,"sec-congty"));
-  DATA.tinhThanh.forEach(t=>idx("Tỉnh/Thành",t.ten,t.ghiChu,"sec-tinhthanh"));
-  DATA.hoSoVanHanh.forEach(h=>{
-    idx("Hồ sơ vận hành",h.nhan,h.mau+" — "+h.coQuan,"sec-hoso");
-    h.noiDung.forEach(x=>idx("Hồ sơ vận hành",h.nhan,x,"sec-hoso"));
-  });
-
-  // Search
-  const searchInput=document.getElementById("searchInput");
-  const searchResults=document.getElementById("searchResults");
-  searchInput.addEventListener("input",()=>{
-    const q=searchInput.value.trim();
-    if(!q){searchResults.classList.remove("show");return;}
-    const tokens=normalize(q).split(/\s+/).filter(Boolean);
-    const matches=SEARCH_INDEX.filter(item=>tokens.every(t=>item.n.includes(t)));
-    if(!matches.length){
-      searchResults.innerHTML=`<div class="sr-empty">Không tìm thấy "${q}".</div>`;
-    }else{
-      searchResults.innerHTML=matches.slice(0,18).map(r=>`<button class="sr-item" data-target="${r.target}"><span class="sr-tag" style="background:var(--paper-deep);color:var(--forest-deep);">${r.tag}</span><div class="sr-title">${r.title}</div><div class="sr-snip">${r.snip}</div></button>`).join("");
-    }
-    searchResults.classList.add("show");
-  });
-  searchInput.addEventListener("focus",()=>{if(searchInput.value.trim())searchResults.classList.add("show");});
-  document.addEventListener("click",e=>{if(!e.target.closest(".search-wrap"))searchResults.classList.remove("show");});
-  searchResults.addEventListener("click",e=>{
-    const btn=e.target.closest(".sr-item");if(!btn)return;
-    goToTarget(btn.dataset.target);searchResults.classList.remove("show");
-  });
-
+  
   // Dropdown file
-  document.addEventListener("click",e=>{
+  document.addEventListener("click", e=>{
     const openDd = e.target.closest(".file-group-btn");
-    document.querySelectorAll(".file-dropdown.show").forEach(dd=>{ if(!openDd || dd.id!==openDd.dataset.dropdown) dd.classList.remove("show"); });
+    document.querySelectorAll(".file-dropdown.show").forEach(dd=>{
+      if(!openDd || dd.id !== openDd.dataset.dropdown) dd.classList.remove("show");
+    });
     if(openDd){
       e.preventDefault();
       const dd = document.getElementById(openDd.dataset.dropdown);
       if(dd) dd.classList.toggle("show");
     }
   });
+  
+  // Build search index
+  const SEARCH_INDEX = buildSearchIndex();
+  
+  // Search
+  const searchInput = document.getElementById("searchInput");
+  const searchResults = document.getElementById("searchResults");
+  
+  searchInput.addEventListener("input", ()=>{
+    const q = searchInput.value.trim();
+    if(!q){ searchResults.classList.remove("show"); return; }
+    const tokens = normalize(q).split(/\s+/).filter(Boolean);
+    const matches = SEARCH_INDEX.filter(item => tokens.every(t => item.n.includes(t)));
+    if(matches.length === 0){
+      searchResults.innerHTML = `<div class="sr-empty">Không tìm thấy "${q}". Thử gõ tên nhà máy (VD: "Đông Bình") hoặc mã (VD: "nm01").</div>`;
+    } else {
+      searchResults.innerHTML = matches.slice(0,20).map(r=>`
+        <button class="sr-item" data-target="${r.target}">
+          <span class="sr-tag" style="background:var(--paper-deep);color:var(--forest-deep);">${r.tag}</span>
+          <div class="sr-title">${r.title}</div>
+          <div class="sr-snip">${r.snip}</div>
+        </button>`).join("");
+    }
+    searchResults.classList.add("show");
+  });
+  
+  searchInput.addEventListener("focus", ()=>{
+    if(searchInput.value.trim()) searchResults.classList.add("show");
+  });
+  
+  document.addEventListener("click", e=>{
+    if(!e.target.closest(".search-wrap")) searchResults.classList.remove("show");
+  });
+  
+  searchResults.addEventListener("click", e=>{
+    const btn = e.target.closest(".sr-item");
+    if(!btn) return;
+    goToTarget(btn.dataset.target);
+    searchResults.classList.remove("show");
+    searchInput.value = ""; // Xóa ô tìm kiếm sau khi bấm
+  });
 }
 
+/* ===== RAIL & THEME (biến toàn cục) ===== */
+const rail = document.getElementById("rail");
+const railBackdrop = document.getElementById("railBackdrop");
+const mainArea = document.getElementById("mainArea");
+function openRail(){ rail.classList.add("open"); if(window.innerWidth>880) mainArea.classList.add("rail-open-desktop"); else railBackdrop.classList.add("show"); }
+function closeRail(){ rail.classList.remove("open"); mainArea.classList.remove("rail-open-desktop"); railBackdrop.classList.remove("show"); }
+function toggleRail(){ rail.classList.contains("open") ? closeRail() : openRail(); }
+
+const THEME_KEY = "tracuu_mt_theme_v50";
+const iconMoon = document.getElementById("iconMoon");
+const iconSun = document.getElementById("iconSun");
+function applyTheme(t){
+  document.documentElement.setAttribute("data-theme", t);
+  iconMoon.style.display = t==="dark" ? "none" : "";
+  iconSun.style.display = t==="dark" ? "" : "none";
+}
+const savedTheme = localStorage.getItem(THEME_KEY) || (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+applyTheme(savedTheme);
+
+/* ===== CHẠY ===== */
 init();
 </script>
 </body>
